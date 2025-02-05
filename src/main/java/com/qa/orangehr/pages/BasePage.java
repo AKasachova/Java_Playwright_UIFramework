@@ -15,13 +15,4 @@ public class BasePage {
         return page.locator(xPath);
     }
 
-    public void chooseDropDownOption(String option, Locator dropDownOptionsLocator) {
-        List<String> allDropDownOptions = dropDownOptionsLocator.allTextContents();
-        for (int i = 0; i < allDropDownOptions.size(); i++) {
-            if (allDropDownOptions.get(i).equals(option)) {
-                dropDownOptionsLocator.nth(i).click();
-                break;
-            }
-        }
-    }
 }
