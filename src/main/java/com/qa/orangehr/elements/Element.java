@@ -20,9 +20,12 @@ public class Element {
         return page;
     }
 
-    protected this last try sorry
 
     public void click() {
         getElement().click();
+    }
+
+    public void fillField(String text){
+        getElement().fill(text);
     }
 }
