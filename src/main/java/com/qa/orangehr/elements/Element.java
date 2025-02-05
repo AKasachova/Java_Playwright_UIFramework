@@ -20,7 +20,7 @@ public class Element {
         return page;
     }
 
-    protected
+    protected this
 
     public void click() {
         getElement().click();
