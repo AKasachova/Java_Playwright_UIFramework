@@ -20,6 +20,8 @@ public class Element {
         return page;
     }
 
+    protected
+
     public void click() {
         getElement().click();
     }
