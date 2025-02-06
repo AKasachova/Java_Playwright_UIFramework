@@ -2,61 +2,48 @@ package com.qa.orangehr.pages;
 
 import com.microsoft.playwright.Page;
 import com.qa.orangehr.elements.Element;
-//import lombok.Getter;
 
 public class LoginPage extends BasePage{
-    //@Getter -- experiment:)
-//    private  String userNameField = "//input[@name = 'username']";
-    private Element logo;
-    private Element userNameField;
-    private Element passwordField;
-    private Element submitButton;
-    private Element validationMessageForCreds;
-
 
     public LoginPage(Page page){
         super(page);
     }
 
     public Element getLogo(){
-        logo = new Element(page, "//div[@class='orangehrm-login-branding']");
-        return logo;
+        return new Element(page, "//div[@class='orangehrm-login-branding']");
     }
 
     public Element getUserNameField(){
-        userNameField = new Element(page, "//input[@name = 'username']");
-        return userNameField;
+        return new Element(page, "//input[@name = 'username']");
     }
 
     public Element getPasswordField(){
-        passwordField = new Element(page,"//input[@type = 'password']");
-        return passwordField;
+        return new Element(page,"//input[@type = 'password']");
     }
 
     public Element getSubmitButton(){
-        submitButton = new Element(page, "button[type = 'submit']");
-        return submitButton;
+        return new Element(page, "button[type = 'submit']");
     }
 
     public Element getValidationMessageForCreds(){
-        validationMessageForCreds = new Element(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
-        return validationMessageForCreds;
+        return new Element(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
     }
 
-    public DashboardPage getDashboardPage(String userName, String password) {
+    public void fillUserNameField(String userName){
         getUserNameField().fillField(userName);
-        getPasswordField().fillField(password);
-        getSubmitButton().click();
-        return new DashboardPage(page);
     }
 
-    public String getValidationMessageForCreds(String userName, String password) {
-        getUserNameField().fillField(userName);
+    public void fillPasswordField(String password){
         getPasswordField().fillField(password);
+    }
+
+    public void clickSubmitButton(){
         getSubmitButton().click();
-        validationMessageForCreds = getValidationMessageForCreds();
+    }
+
+    public String getValidationMessageTextForCreds() {
+        Element validationMessageForCreds = getValidationMessageForCreds();
         validationMessageForCreds.waitForXPathToBeAvailable();
-
         return validationMessageForCreds.getTextContent();
     }
 }

@@ -18,27 +18,41 @@ public class LoginTests extends BaseTest {
 
     @Test
     @Order(2)
-    public void userWasLoggedInSucсessfully() {
-        new DashboardPage(page);
-        DashboardPage dashboardPage = loginPage.getDashboardPage(prop.getProperty("userName"), prop.getProperty("password"));
+    public void userWasLoggedInSuccessfully() {
+        String userName = prop.getProperty("userName");
+        String password = prop.getProperty("password");
+        loginPage.fillUserNameField(userName);
+        loginPage.fillPasswordField(password);
+        loginPage.clickSubmitButton();
 
+        DashboardPage dashboardPage = new DashboardPage(page);
         Assertions.assertNotNull(dashboardPage.getUserDropDown());
     }
 
     @Test
     @Order(3)
     public void  userWasNotLoggedInWithInvalidCreds(){
-        String validationMessageForCreds = loginPage.getValidationMessageForCreds("1", "1");
+        loginPage.fillUserNameField("userName");
+        loginPage.fillPasswordField("password");
+        loginPage.clickSubmitButton();
+        String validationMessageTextForCreds = loginPage.getValidationMessageTextForCreds();
 
-        Assertions.assertEquals("Invalid credentials", validationMessageForCreds);
+        Assertions.assertEquals("Invalid credentials", validationMessageTextForCreds);
     }
 
     @Test
     @Order(4)
-    public void userLoggedOutSucсessfully() {
-        new DashboardPage(page);
-        DashboardPage dashboardPage = loginPage.getDashboardPage(prop.getProperty("userName"), prop.getProperty("password"));
-        dashboardPage.getLoginPageAfterlogout();
+    public void userLoggedOutSuccessfully() {
+        String userName = prop.getProperty("userName");
+        String password = prop.getProperty("password");
+        loginPage.fillUserNameField(userName);
+        loginPage.fillPasswordField(password);
+        loginPage.clickSubmitButton();
+
+        DashboardPage dashboardPage = new DashboardPage(page);
+        dashboardPage.getUserDropDown();
+        dashboardPage.expandUserDropDown();
+        dashboardPage.clickLinkToLogout();
 
         Assertions.assertNotNull(loginPage.getLogo());
     }
