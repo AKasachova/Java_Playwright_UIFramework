@@ -1,20 +1,29 @@
 package com.qa.orangehr.pages;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.qa.orangehr.elements.Element;
 
 public class DashboardPage extends BasePage{
-    private Page page;
-    private String userDropDown = "//li[@class = 'oxd-userdropdown']";
-    private String logOutLink = "//ul[.//a[contains(text(),'Logout')]]";
+    private Element userDropDown;
+    private Element logOutLink;
 
     public DashboardPage(Page page) {
         super(page);
     }
 
-    public LoginPage logout(){
-        page.locator(userDropDown).click();
-        page.locator(logOutLink).click();
+    public Element getUserDropDown() {
+        userDropDown = new Element(page, "//div[@class='oxd-topbar-header-userarea']//li[@class = 'oxd-userdropdown']");
+        return userDropDown;
+    }
+
+    public Element getLogOutLink(){
+        logOutLink = new Element(page, "//ul[@role='menu']//li[.//a[contains(text(),'Logout')]]");
+        return logOutLink;
+    }
+
+    public LoginPage getLoginPageAfterlogout(){
+        getUserDropDown().click();
+        getLogOutLink().click();
         return new LoginPage(page);
     }
 }

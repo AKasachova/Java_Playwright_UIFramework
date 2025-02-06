@@ -15,7 +15,7 @@ public class PlaywrightFactory {
     Page page;
     Properties prop;
 
-    public Browser initBrowser(Properties prop) {
+    public Browser getBrowser(Properties prop) {
         playwright = Playwright.create();
         String browserName = prop.getProperty("browser").trim();
         switch (browserName.toLowerCase()) {
@@ -47,7 +47,7 @@ public class PlaywrightFactory {
     /**
      * this method is used to initialize the properties from config file
      */
-    public Properties init_prop(){
+    public Properties getProp(){
         try{
             FileInputStream ip = new FileInputStream(new File("./src/main/resources/config/config.properties"));
             prop = new Properties();
