@@ -50,7 +50,6 @@ public class LoginTests extends BaseTest {
         loginPage.clickSubmitButton();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        dashboardPage.getUserDropDown();
         dashboardPage.expandUserDropDown();
         dashboardPage.clickLinkToLogout();
 
