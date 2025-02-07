@@ -12,7 +12,6 @@ public class LoginTests extends BaseTest {
     @Order(1)
     public void loginPageContainsLogo(){
         Element logo = loginPage.getLogo();
-
         Assertions.assertNotNull(logo);
     }
 
@@ -36,7 +35,6 @@ public class LoginTests extends BaseTest {
         loginPage.fillPasswordField("password");
         loginPage.clickSubmitButton();
         String validationMessageTextForCreds = loginPage.getValidationMessageTextForCreds();
-
         Assertions.assertEquals("Invalid credentials", validationMessageTextForCreds);
     }
 
@@ -50,9 +48,7 @@ public class LoginTests extends BaseTest {
         loginPage.clickSubmitButton();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        dashboardPage.expandUserDropDown();
-        dashboardPage.clickLinkToLogout();
-
+        dashboardPage.getUserDropDown().chooseDropDownOption("Logout");
         Assertions.assertNotNull(loginPage.getLogo());
     }
 }
