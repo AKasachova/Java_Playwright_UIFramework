@@ -5,7 +5,6 @@ import com.qa.orangehr.elements.Element;
 import com.qa.orangehr.pages.DashboardPage;
 import org.junit.jupiter.api.*;
 
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginTests extends BaseTest {
     @Test
@@ -18,10 +17,8 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(2)
     public void userWasLoggedInSuccessfully() {
-        String userName = prop.getProperty("userName");
-        String password = prop.getProperty("password");
-        loginPage.fillUserNameField(userName);
-        loginPage.fillPasswordField(password);
+        loginPage.fillUserNameField(userNameValid);
+        loginPage.fillPasswordField(passwordValid);
         loginPage.clickSubmitButton();
 
         DashboardPage dashboardPage = new DashboardPage(page);
@@ -31,24 +28,24 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(3)
     public void  userWasNotLoggedInWithInvalidCreds(){
-        loginPage.fillUserNameField("userName");
-        loginPage.fillPasswordField("password");
+        loginPage.fillUserNameField(userNameInvalid);
+        loginPage.fillPasswordField(passwordInvalid);
         loginPage.clickSubmitButton();
-        String validationMessageTextForCreds = loginPage.getValidationMessageTextForCreds();
-        Assertions.assertEquals("Invalid credentials", validationMessageTextForCreds);
+
+        String validationMessageTextForCredsActual = loginPage.getValidationMessageTextForCreds();
+        String validationMessageTextForCredsExpected = "Invalid credentials";
+        Assertions.assertEquals(validationMessageTextForCredsExpected, validationMessageTextForCredsActual);
     }
 
     @Test
     @Order(4)
     public void userLoggedOutSuccessfully() {
-        String userName = prop.getProperty("userName");
-        String password = prop.getProperty("password");
-        loginPage.fillUserNameField(userName);
-        loginPage.fillPasswordField(password);
+        loginPage.fillUserNameField(userNameValid);
+        loginPage.fillPasswordField(passwordValid);
         loginPage.clickSubmitButton();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        dashboardPage.getUserDropDown().chooseDropDownOption("Logout");
+        dashboardPage.logOutFromTheApp();
         Assertions.assertNotNull(loginPage.getLogo());
     }
 }

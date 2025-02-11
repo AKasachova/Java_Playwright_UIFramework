@@ -46,4 +46,5 @@ public class LoginPage extends BasePage{
         validationMessageForCreds.waitForXPathToBeAvailable();
         return validationMessageForCreds.getTextContent();
     }
+
 }

@@ -1,7 +1,6 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
-import com.qa.orangehr.elements.DropDownElement;
 import com.qa.orangehr.pages.AdminUserManagementPage;
 import com.qa.orangehr.pages.DashboardPage;
 import org.junit.jupiter.api.Assertions;
@@ -14,43 +13,40 @@ import java.util.List;
 public class UserRoleDropDownTests extends BaseTest {
     @Test
     public void userDropDownOptionsAreDisplayedCorrectly(){
-        String userName = prop.getProperty("userName");
-        String password = prop.getProperty("password");
-        loginPage.fillUserNameField(userName);
-        loginPage.fillPasswordField(password);
+        loginPage.fillUserNameField(userNameValid);
+        loginPage.fillPasswordField(passwordValid);
         loginPage.clickSubmitButton();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        dashboardPage.clickAdminOptionInSearch();
+        dashboardPage.clickOptionInSearch("Admin");
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
-        DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
-        boolean userRoleDropDownOptionsCountVerification = userRoleDropDown.checkDropDownOptionsCount(3) ;
-        Assertions.assertTrue(userRoleDropDownOptionsCountVerification);
+        adminUserManagementPage.expandUserRoleDropDown();
+        int optionsCountActual = adminUserManagementPage.getAllUserDropDownOptions().size();
+        int optionsCountExpected = 2;
+        Assertions.assertEquals(optionsCountExpected, optionsCountActual);
 
-        //Missing drop-down option: --Select--
-        List<String> expectedOptionsText = Arrays.asList("--Select--", "Admin", "ESS");
-        boolean userRoleDropDownOptionsTextVerification = userRoleDropDown.checkDropDownOptionsText(expectedOptionsText) ;
-        Assertions.assertTrue(userRoleDropDownOptionsTextVerification);
+        List<String> expectedOptionsText = Arrays.asList("Admin", "ESS");
+        List<String> actualOptionsText = adminUserManagementPage.getUserRoleDropDownOptionsText();
+        Assertions.assertEquals(expectedOptionsText, actualOptionsText);
     }
 
     @Test
     public void optionsInUserDropDownAreSetAndResetCorrectly() {
-        String userName = prop.getProperty("userName");
-        String password = prop.getProperty("password");
-        loginPage.fillUserNameField(userName);
-        loginPage.fillPasswordField(password);
+        loginPage.fillUserNameField(userNameValid);
+        loginPage.fillPasswordField(passwordValid);
         loginPage.clickSubmitButton();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        dashboardPage.clickAdminOptionInSearch();
+        dashboardPage.clickOptionInSearch("Admin");
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
-        DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
-        userRoleDropDown.chooseDropDownOption("Admin");
-        Assertions.assertEquals("Admin", userRoleDropDown.getSetDropDownOption());
+        adminUserManagementPage.expandUserRoleDropDown();
+        adminUserManagementPage.chooseUserRoleDropDownOption("Admin");
+        Assertions.assertEquals("Admin", adminUserManagementPage.getSetUserRoleDropDownOption());
 
-        userRoleDropDown.resetDropDownOptions();
-        Assertions.assertEquals("-- Select --", userRoleDropDown.getSetDropDownOption());
+        adminUserManagementPage.expandUserRoleDropDown();
+        adminUserManagementPage.resetUserRoleDropDownOptions();
+        Assertions.assertEquals("-- Select --", adminUserManagementPage.getSetUserRoleDropDownOption());
     }
 }

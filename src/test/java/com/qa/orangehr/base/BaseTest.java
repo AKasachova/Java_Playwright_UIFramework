@@ -18,10 +18,14 @@ public class BaseTest {
     protected static Properties prop;
     private static PlaywrightFactory pf;
 
+    protected String userNameValid = prop.getProperty("userName");
+    protected String passwordValid = prop.getProperty("password");
+    protected String userNameInvalid = "userName";
+    protected String passwordInvalid = "password";
+
     protected BrowserContext context;
     protected Page page;
     protected LoginPage loginPage;
-    protected DashboardPage homePage;
 
     @BeforeAll
     public static void setUpTestSuit(){

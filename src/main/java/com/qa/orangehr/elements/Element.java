@@ -16,7 +16,6 @@ public class Element {
         return page.locator(xPath);
     }
 
-
     protected Page getPage() {
         return page;
     }
@@ -35,5 +34,9 @@ public class Element {
 
     public void waitForXPathToBeAvailable(){
         page.waitForSelector(xPath);
+    }
+
+    protected boolean isVisible() {
+        return getElement().isVisible();
     }
 }
