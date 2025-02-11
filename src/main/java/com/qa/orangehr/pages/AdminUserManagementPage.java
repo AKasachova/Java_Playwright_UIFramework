@@ -4,12 +4,11 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.qa.orangehr.elements.DropDownElement;
 import com.qa.orangehr.elements.Element;
+import com.qa.orangehr.modules.Table;
 import java.util.List;
 
 public class AdminUserManagementPage extends BasePage{
-//    private String recordsFoundTable = "//div[@class= 'oxd-table-body']";
-//    private String recordsFoundTableRow = "//div[contains(@class, 'oxd-table-card')]";
-//    private String recordsFoundTableColumn = "//div[contains(@class, 'oxd-table-cell')]";
+
     private final String dropDownXPath = "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]//div[@class='oxd-select-wrapper']";
 
     public AdminUserManagementPage(Page page) {
@@ -19,6 +18,11 @@ public class AdminUserManagementPage extends BasePage{
     public DropDownElement getUserRoleDropDown() {
         return new DropDownElement(page, dropDownXPath);
     }
+
+    public Table getRecordsFoundTable(){
+        return new Table(page, "//div[@class= 'oxd-table']");
+    }
+
     public Element getUserRoleDropDownCaretDown(){
         return new Element(page, "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]//i[contains(@class, 'bi-caret-down-fill')]");
     }
@@ -55,9 +59,11 @@ public class AdminUserManagementPage extends BasePage{
         getUserRoleDropDown().resetDropDownOptions(getUserRoleOptionsWithDefaultXPath());
     }
 
-//    public String getRecordsFoundTableCellValue(int rowIndex, int colIndex) throws InterruptedException {
-//        TableElement foundTable = new TableElement(page, recordsFoundTable);
-//        return foundTable.getTableCellValue(this.recordsFoundTableRow, this.recordsFoundTableColumn, rowIndex, colIndex);
-//    }
+    public List<String> getColumnValues(String columnName){
+        return getRecordsFoundTable().getColumnValues(columnName);
+    }
 
+    public String getCellValue(String columnName, int rowIndex){
+        return getRecordsFoundTable().getCellValue(columnName, rowIndex);
+    }
 }
