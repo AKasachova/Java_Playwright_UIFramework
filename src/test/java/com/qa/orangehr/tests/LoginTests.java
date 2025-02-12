@@ -17,12 +17,10 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(2)
     public void userWasLoggedInSuccessfully() {
-        loginPage.fillUserNameField(userNameValid);
-        loginPage.fillPasswordField(passwordValid);
-        loginPage.clickSubmitButton();
+        logInAsAdmin();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        Assertions.assertNotNull(dashboardPage.getUserDropDown());
+        Assertions.assertNotNull(dashboardPage.getUserMenu());
     }
 
     @Test
@@ -40,9 +38,7 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(4)
     public void userLoggedOutSuccessfully() {
-        loginPage.fillUserNameField(userNameValid);
-        loginPage.fillPasswordField(passwordValid);
-        loginPage.clickSubmitButton();
+        logInAsAdmin();
 
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.logOutFromTheApp();

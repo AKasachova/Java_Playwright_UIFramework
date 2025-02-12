@@ -17,9 +17,6 @@ public class BaseTest {
     private static Browser browser;
     protected static Properties prop;
     private static PlaywrightFactory pf;
-
-    protected String userNameValid = prop.getProperty("userName");
-    protected String passwordValid = prop.getProperty("password");
     protected String userNameInvalid = "userName";
     protected String passwordInvalid = "password";
 
@@ -48,5 +45,11 @@ public class BaseTest {
     @AfterAll
     public static void tearDownTests(){
         browser.close();
+    }
+
+    public void logInAsAdmin(){
+        loginPage.fillUserNameField(prop.getProperty("userNameAdmin"));
+        loginPage.fillPasswordField(prop.getProperty("passwordAdmin"));
+        loginPage.clickSubmitButton();
     }
 }

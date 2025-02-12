@@ -6,23 +6,42 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DropDownElement extends Element {
+    private String dropDownXPath;
 
     public DropDownElement(Page page, String dropDownXPath) {
         super(page, dropDownXPath);
+        this.dropDownXPath = dropDownXPath;
     }
 
-    public void expandDropDown(Element dropDownCaretDown){
-        if (dropDownCaretDown.isVisible()){
-        getElement().click();
+    public Element getDropDownCaretDown(){
+        String userRoleDropDownCaretDownXPath = String.format("%s//i[contains(@class, 'bi-caret-down-fill')]", this.dropDownXPath);
+        return new Element(page, userRoleDropDownCaretDownXPath);
+    }
+
+    public String getDropDownOptionsWithoutDefaultXPath(){
+        return String.format("%s//div[@class='oxd-select-option']//span",  this.dropDownXPath);
+    }
+
+    public String getDropDownOptionsWithDefaultXPath(){
+        return String.format("%s//div[@class='oxd-select-option']",  this.dropDownXPath);
+    }
+
+    public void expandDropDown(){
+        if (getDropDownCaretDown().isVisible()){
+            getElement().click();
         }
     }
 
-    public List<Locator> getAllDropDownOptions(String xPathForOptions){
-        return page.locator(xPathForOptions).all();
+    public List<Locator> getAllDropDownOptionsWithoutDefault(){
+        return page.locator(getDropDownOptionsWithoutDefaultXPath()).all();
     }
 
-    public void chooseDropDownOption(String optionToChoose, String xPathForOptions) {
-        List<Locator> allOptions = getAllDropDownOptions(xPathForOptions);
+    public List<Locator> getAllDropDownOptionsWithDefault(){
+        return page.locator(getDropDownOptionsWithDefaultXPath()).all();
+    }
+
+    public void chooseDropDownOption(String optionToChoose) {
+        List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
         for (Locator option : allOptions) {
             if (option.textContent().equals(optionToChoose)) {
                 option.click();
@@ -31,8 +50,8 @@ public class DropDownElement extends Element {
         }
     }
 
-    public void resetDropDownOptions(String xPathForOptionsIncludingDefault) {
-        List<Locator> allOptions = getAllDropDownOptions(xPathForOptionsIncludingDefault);
+    public void resetDropDownOptions() {
+        List<Locator> allOptions = getAllDropDownOptionsWithDefault();
         if (!allOptions.isEmpty()) {
             allOptions.get(0).click();
         } else {
@@ -40,8 +59,8 @@ public class DropDownElement extends Element {
         }
     }
 
-    public List<String> getDropDownOptionsText(String xpathForOptions) {
-        List<Locator> allOptions = getAllDropDownOptions(xpathForOptions);
+    public List<String> getDropDownOptionsText() {
+        List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
         return allOptions.stream()
                                 .map(locator -> locator.innerText().trim())
                                 .collect(Collectors.toList());

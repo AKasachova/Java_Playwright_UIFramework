@@ -1,6 +1,7 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
+import com.qa.orangehr.modules.Table;
 import com.qa.orangehr.pages.AdminUserManagementPage;
 import com.qa.orangehr.pages.DashboardPage;
 import org.junit.jupiter.api.Test;
@@ -9,15 +10,14 @@ import org.junit.jupiter.api.Test;
 public class TableElementTest extends BaseTest {
     @Test
     public void correctValueOfTheCellIsDisplayed(){
-        loginPage.fillUserNameField(userNameValid);
-        loginPage.fillPasswordField(passwordValid);
-        loginPage.clickSubmitButton();
+        logInAsAdmin();
 
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.clickOptionInSearch("Admin");
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
-        System.out.println(adminUserManagementPage.getColumnValues("Employee Name"));
-        System.out.println(adminUserManagementPage.getCellValue("Employee Name", 2));
+        Table recordsFoundTable = adminUserManagementPage.getRecordsFoundTable();
+        System.out.println(recordsFoundTable.getColumnValues("Employee Name"));
+        System.out.println(recordsFoundTable.getCellValue("Employee Name", 2));
         }
     }
