@@ -41,6 +41,7 @@ public class DropDownElement extends Element {
     }
 
     public void chooseDropDownOption(String optionToChoose) {
+        expandDropDown();
         List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
         for (Locator option : allOptions) {
             if (option.textContent().equals(optionToChoose)) {
@@ -51,6 +52,7 @@ public class DropDownElement extends Element {
     }
 
     public void resetDropDownOptions() {
+        expandDropDown();
         List<Locator> allOptions = getAllDropDownOptionsWithDefault();
         if (!allOptions.isEmpty()) {
             allOptions.get(0).click();
@@ -60,6 +62,7 @@ public class DropDownElement extends Element {
     }
 
     public List<String> getDropDownOptionsText() {
+        expandDropDown();
         List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
         return allOptions.stream()
                                 .map(locator -> locator.innerText().trim())

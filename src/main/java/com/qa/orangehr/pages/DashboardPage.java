@@ -14,6 +14,10 @@ public class DashboardPage extends BasePage{
         return new MenuElement(page, "//li[contains(@class, 'oxd-userdropdown')]");
     }
 
+    public boolean isUserMenuVisible(){
+        return getUserMenu().isVisible();
+    }
+
     public Element getOptionInSearch(String option) {
         return new Element(page, String.format("//a//*[text()='%s']", option));
     }

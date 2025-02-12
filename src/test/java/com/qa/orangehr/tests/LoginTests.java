@@ -1,7 +1,6 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
-import com.qa.orangehr.elements.Element;
 import com.qa.orangehr.pages.DashboardPage;
 import org.junit.jupiter.api.*;
 
@@ -10,8 +9,8 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(1)
     public void loginPageContainsLogo(){
-        Element logo = loginPage.getLogo();
-        Assertions.assertNotNull(logo);
+        boolean logoPresent = loginPage.logoIsVisible();
+        Assertions.assertTrue(logoPresent);
     }
 
     @Test
@@ -20,7 +19,7 @@ public class LoginTests extends BaseTest {
         logInAsAdmin();
 
         DashboardPage dashboardPage = new DashboardPage(page);
-        Assertions.assertNotNull(dashboardPage.getUserMenu());
+        Assertions.assertTrue(dashboardPage.isUserMenuVisible());
     }
 
     @Test
@@ -42,6 +41,6 @@ public class LoginTests extends BaseTest {
 
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.logOutFromTheApp();
-        Assertions.assertNotNull(loginPage.getLogo());
+        Assertions.assertTrue(loginPage.logoIsVisible());
     }
 }

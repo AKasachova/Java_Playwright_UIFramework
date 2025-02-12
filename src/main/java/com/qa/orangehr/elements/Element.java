@@ -36,7 +36,7 @@ public class Element {
         page.waitForSelector(xPath);
     }
 
-    protected boolean isVisible() {
+    public boolean isVisible() {
         return getElement().isVisible();
     }
 }

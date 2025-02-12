@@ -21,14 +21,13 @@ public class UserRoleDropDownTests extends BaseTest {
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
         DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
-        userRoleDropDown.expandDropDown();
-        int optionsCountActual = userRoleDropDown.getAllDropDownOptionsWithoutDefault().size();
-        int optionsCountExpected = 2;
-        Assertions.assertEquals(optionsCountExpected, optionsCountActual);
-
         List<String> expectedOptionsText = Arrays.asList("Admin", "ESS");
         List<String> actualOptionsText = userRoleDropDown.getDropDownOptionsText();
         Assertions.assertEquals(expectedOptionsText, actualOptionsText);
+
+        int optionsCountActual = actualOptionsText.size();
+        int optionsCountExpected = 2;
+        Assertions.assertEquals(optionsCountExpected, optionsCountActual);
     }
 
     @Test
@@ -40,11 +39,9 @@ public class UserRoleDropDownTests extends BaseTest {
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
         DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
-        userRoleDropDown.expandDropDown();
         userRoleDropDown.chooseDropDownOption("Admin");
         Assertions.assertEquals("Admin", userRoleDropDown.getSetDropDownOption());
 
-        userRoleDropDown.expandDropDown();
         userRoleDropDown.resetDropDownOptions();
         Assertions.assertEquals("-- Select --", userRoleDropDown.getSetDropDownOption());
     }

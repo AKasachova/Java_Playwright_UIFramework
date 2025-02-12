@@ -29,6 +29,10 @@ public class LoginPage extends BasePage{
         return new Element(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
     }
 
+    public boolean logoIsVisible(){
+        return getLogo().isVisible();
+    }
+
     public void fillUserNameField(String userName){
         getUserNameField().fillField(userName);
     }
