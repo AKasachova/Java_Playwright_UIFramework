@@ -17,5 +17,4 @@ public class AdminUserManagementPage extends BasePage{
     public Table getRecordsFoundTable(){
         return new Table(page, "//div[@class= 'oxd-table']");
     }
-
 }

@@ -29,7 +29,7 @@ public class LoginPage extends BasePage{
         return new Element(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
     }
 
-    public boolean logoIsVisible(){
+    public boolean isLogoVisible(){
         return getLogo().isVisible();
     }
 

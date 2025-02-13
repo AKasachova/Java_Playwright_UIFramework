@@ -9,7 +9,7 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(1)
     public void loginPageContainsLogo(){
-        boolean logoPresent = loginPage.logoIsVisible();
+        boolean logoPresent = loginPage.isLogoVisible();
         Assertions.assertTrue(logoPresent);
     }
 
@@ -41,6 +41,6 @@ public class LoginTests extends BaseTest {
 
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.logOutFromTheApp();
-        Assertions.assertTrue(loginPage.logoIsVisible());
+        Assertions.assertTrue(loginPage.isLogoVisible());
     }
 }
