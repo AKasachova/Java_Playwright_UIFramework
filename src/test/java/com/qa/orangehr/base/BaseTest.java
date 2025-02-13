@@ -15,26 +15,26 @@ import java.util.Properties;
 
 public class BaseTest {
     private static Browser browser;
-    private static Properties prop;
+    protected static Properties prop;
     private static PlaywrightFactory pf;
+    protected String userNameInvalid = "userName";
+    protected String passwordInvalid = "password";
 
     protected BrowserContext context;
     protected Page page;
     protected LoginPage loginPage;
-    protected DashboardPage homePage;
 
     @BeforeAll
     public static void setUpTestSuit(){
         pf = new PlaywrightFactory();
-        prop = pf.init_prop();
-        browser = pf.initBrowser(prop);
+        prop = pf.getProp();
+        browser = pf.getBrowser(prop);
     }
 
     @BeforeEach
     public void setUpContextAndPage(){
         page = pf.getNewContextAndPage(browser);
         loginPage = new LoginPage(page);
-        homePage = loginPage.submitLoginForm(prop.getProperty("userName"), prop.getProperty("password"));
     }
 
     @AfterEach
@@ -45,5 +45,11 @@ public class BaseTest {
     @AfterAll
     public static void tearDownTests(){
         browser.close();
+    }
+
+    public void logInAsAdmin(){
+        loginPage.fillUserNameField(prop.getProperty("userNameAdmin"));
+        loginPage.fillPasswordField(prop.getProperty("passwordAdmin"));
+        loginPage.clickSubmitButton();
     }
 }
