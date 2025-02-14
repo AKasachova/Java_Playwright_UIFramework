@@ -1,8 +1,8 @@
-package com.qa.orangehr.pages;
+package com.qa.orangehr.pageObjects.pages;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.elements.Element;
-import com.qa.orangehr.elements.MenuElement;
+import com.qa.orangehr.pageObjects.elements.Element;
+import com.qa.orangehr.pageObjects.elements.MenuElement;
 
 public class DashboardPage extends BasePage{
 

@@ -1,8 +1,8 @@
-package com.qa.orangehr.pages;
+package com.qa.orangehr.pageObjects.pages;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.elements.DropDownElement;
-import com.qa.orangehr.modules.Table;
+import com.qa.orangehr.pageObjects.elements.DropDownElement;
+import com.qa.orangehr.pageObjects.modules.Table;
 
 public class AdminUserManagementPage extends BasePage{
 

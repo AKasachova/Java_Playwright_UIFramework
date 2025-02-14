@@ -1,4 +1,4 @@
-package com.qa.orangehr.elements;
+package com.qa.orangehr.pageObjects.elements;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -52,7 +52,6 @@ public class DropDownElement extends Element {
     }
 
     public void resetDropDownOptions() {
-        expandDropDown();
         List<Locator> allOptions = getAllDropDownOptionsWithDefault();
         if (!allOptions.isEmpty()) {
             allOptions.get(0).click();
@@ -62,7 +61,6 @@ public class DropDownElement extends Element {
     }
 
     public List<String> getDropDownOptionsText() {
-        expandDropDown();
         List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
         return allOptions.stream()
                                 .map(locator -> locator.innerText().trim())

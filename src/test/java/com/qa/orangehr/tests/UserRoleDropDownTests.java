@@ -1,9 +1,9 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
-import com.qa.orangehr.elements.DropDownElement;
-import com.qa.orangehr.pages.AdminUserManagementPage;
-import com.qa.orangehr.pages.DashboardPage;
+import com.qa.orangehr.pageObjects.elements.DropDownElement;
+import com.qa.orangehr.pageObjects.pages.AdminUserManagementPage;
+import com.qa.orangehr.pageObjects.pages.DashboardPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +22,7 @@ public class UserRoleDropDownTests extends BaseTest {
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
         DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
         List<String> expectedOptionsText = Arrays.asList("Admin", "ESS");
+        userRoleDropDown.expandDropDown();
         List<String> actualOptionsText = userRoleDropDown.getDropDownOptionsText();
         Assertions.assertEquals(expectedOptionsText, actualOptionsText);
 
@@ -42,6 +43,7 @@ public class UserRoleDropDownTests extends BaseTest {
         userRoleDropDown.chooseDropDownOption("Admin");
         Assertions.assertEquals("Admin", userRoleDropDown.getSetDropDownOption());
 
+        userRoleDropDown.expandDropDown();
         userRoleDropDown.resetDropDownOptions();
         Assertions.assertEquals("-- Select --", userRoleDropDown.getSetDropDownOption());
     }
