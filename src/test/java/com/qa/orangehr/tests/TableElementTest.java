@@ -1,6 +1,5 @@
 package com.qa.orangehr.tests;
 
-import com.qa.orangehr.base.BaseTest;
 import com.qa.orangehr.pageObjects.modules.Table;
 import com.qa.orangehr.pageObjects.pages.AdminUserManagementPage;
 import com.qa.orangehr.pageObjects.pages.DashboardPage;
@@ -29,5 +28,5 @@ public class TableElementTest extends BaseTest {
         String expectedEmployeeName = "Achu MMS";
         String actualEmployeeName = recordsFoundTable.getCellValue("Employee Name", 2);
         Assertions.assertEquals(expectedEmployeeName, actualEmployeeName);
-        }
     }
+}

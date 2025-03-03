@@ -9,7 +9,7 @@ public class LoginPage extends BasePage{
         super(page);
     }
 
-    public Element getLogo(){
+    public Element getLogo() {
         return new Element(page, "//div[@class='orangehrm-login-branding']");
     }
 
@@ -50,5 +50,4 @@ public class LoginPage extends BasePage{
         validationMessageForCreds.waitForXPathToBeAvailable();
         return validationMessageForCreds.getTextContent();
     }
-
 }

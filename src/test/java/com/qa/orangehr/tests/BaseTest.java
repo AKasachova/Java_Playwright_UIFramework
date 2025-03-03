@@ -1,4 +1,4 @@
-package com.qa.orangehr.base;
+package com.qa.orangehr.tests;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -17,9 +17,6 @@ public class BaseTest {
     private static Browser browser;
     protected static Properties prop;
     private static PlaywrightFactory pf;
-    protected String userNameInvalid = "userName";
-    protected String passwordInvalid = "password";
-
     protected BrowserContext context;
     protected Page page;
     protected LoginPage loginPage;
@@ -47,9 +44,13 @@ public class BaseTest {
         browser.close();
     }
 
-    public void logInAsAdmin(){
-        loginPage.fillUserNameField(prop.getProperty("userNameAdmin"));
-        loginPage.fillPasswordField(prop.getProperty("passwordAdmin"));
+    public void logIn(String userName, String password){
+        loginPage.fillUserNameField(userName);
+        loginPage.fillPasswordField(password);
         loginPage.clickSubmitButton();
+    }
+
+    public void logInAsAdmin(){
+        logIn(prop.getProperty("userNameAdmin"), prop.getProperty("passwordAdmin"));
     }
 }

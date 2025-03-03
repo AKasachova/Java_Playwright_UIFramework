@@ -26,12 +26,10 @@ public class Table extends Element {
     }
 
     public List<String> getColumnValues(String columnName){
-       //String columnValuesXPath = String.format("%s//div[@class='oxd-table-body']//div[@role='row']/div[count(%s/preceding-sibling::div) + 1]", this.tableXPath, getHeaderXPath(columnName));
        return page.locator( getColumnXPath(columnName)).allInnerTexts();
     }
 
     public String getCellValue(String columnName, int rowIndex){
-        //String cellXPath = String.format("(%s//div[@class='oxd-table-body']//div[@role='row'])[%d]/div[count(%s/preceding-sibling::div) + 1]", this.tableXPath, rowIndex, getHeaderXPath(columnName));
-        return page.locator(getCellXPath(columnName,rowIndex)).innerText();
+       return page.locator(getCellXPath(columnName,rowIndex)).innerText();
     }
 }

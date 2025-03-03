@@ -1,11 +1,13 @@
 package com.qa.orangehr.tests;
 
-import com.qa.orangehr.base.BaseTest;
 import com.qa.orangehr.pageObjects.pages.DashboardPage;
 import org.junit.jupiter.api.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginTests extends BaseTest {
+    protected String userNameInvalid = "userName";
+    protected String passwordInvalid = "password";
+
     @Test
     @Order(1)
     public void loginPageContainsLogo(){
@@ -25,9 +27,7 @@ public class LoginTests extends BaseTest {
     @Test
     @Order(3)
     public void  userWasNotLoggedInWithInvalidCreds(){
-        loginPage.fillUserNameField(userNameInvalid);
-        loginPage.fillPasswordField(passwordInvalid);
-        loginPage.clickSubmitButton();
+        logIn(userNameInvalid, passwordInvalid);
 
         String validationMessageTextForCredsActual = loginPage.getValidationMessageTextForCreds();
         String validationMessageTextForCredsExpected = "Invalid credentials";
