@@ -1,7 +1,7 @@
-package com.qa.orangehr.pages;
+package com.qa.orangehr.pageObjects.pages;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.elements.Element;
+import com.qa.orangehr.pageObjects.elements.Element;
 
 public class LoginPage extends BasePage{
 
@@ -9,7 +9,7 @@ public class LoginPage extends BasePage{
         super(page);
     }
 
-    public Element getLogo(){
+    public Element getLogo() {
         return new Element(page, "//div[@class='orangehrm-login-branding']");
     }
 
@@ -50,5 +50,4 @@ public class LoginPage extends BasePage{
         validationMessageForCreds.waitForXPathToBeAvailable();
         return validationMessageForCreds.getTextContent();
     }
-
 }

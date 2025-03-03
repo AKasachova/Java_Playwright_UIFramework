@@ -1,4 +1,4 @@
-package com.qa.orangehr.factory;
+package com.qa.orangehr.utils.factory;
 
 import com.microsoft.playwright.*;
 
