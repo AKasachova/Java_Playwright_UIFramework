@@ -1,8 +1,10 @@
 package com.qa.orangehr.pages;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.elements.DropDownElement;
+import com.qa.orangehr.elements.DropDown;
 import com.qa.orangehr.modules.Table;
+
+import java.util.List;
 
 public class AdminUserManagementPage extends BasePage{
 
@@ -10,11 +12,37 @@ public class AdminUserManagementPage extends BasePage{
         super(page);
     }
 
-    public DropDownElement getUserRoleDropDown() {
-        return new DropDownElement(page, "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]//div[@class='oxd-select-wrapper']");
+    private DropDown getUserRoleDropDown() {
+        return new DropDown(page, "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]//div[@class='oxd-select-wrapper']");
     }
 
-    public Table getRecordsFoundTable(){
-        return new Table(page, "//div[@class= 'oxd-table']");
+    private Table getRecordsFoundTable(){
+        return new Table(page, "//div[@class='oxd-table']");
+    }
+
+    public List<String> getAllUserRoleDropDownOptions() {
+        getUserRoleDropDown().expandDropDown();
+        return getUserRoleDropDown().getDropDownOptionsText();
+    }
+
+    public void chooseUserRoleDropDownOption(String option){
+        getUserRoleDropDown().chooseDropDownOption(option);
+    }
+
+    public String getSetUserRoleDropDownOption(){
+        return getUserRoleDropDown().getSetDropDownOption();
+    }
+
+    public void resetUserRoleDropDownOption(){
+        getUserRoleDropDown().expandDropDown();
+        getUserRoleDropDown().resetDropDownOptions();
+    }
+
+    public List<String> getColumnValuesForRecordsFoundTable(String columnName){
+        return getRecordsFoundTable().getColumnValues(columnName);
+    }
+
+    public String getCellValueForRecordsFoundTable(String columnName, int rowIndex){
+        return getRecordsFoundTable().getCellValue(columnName, rowIndex);
     }
 }

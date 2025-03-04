@@ -1,7 +1,10 @@
 package com.qa.orangehr.pages;
 
 import com.microsoft.playwright.Page;
+import com.qa.orangehr.elements.Button;
 import com.qa.orangehr.elements.Element;
+import com.qa.orangehr.elements.Message;
+import com.qa.orangehr.elements.TextField;
 
 public class LoginPage extends BasePage{
 
@@ -9,24 +12,25 @@ public class LoginPage extends BasePage{
         super(page);
     }
 
-    public Element getLogo(){
+    //will not implement separate wrapper
+    private Element getLogo(){
         return new Element(page, "//div[@class='orangehrm-login-branding']");
     }
 
-    public Element getUserNameField(){
-        return new Element(page, "//input[@name = 'username']");
+    private TextField getUserNameField(){
+        return new TextField(page, "//input[@name = 'username']");
     }
 
-    public Element getPasswordField(){
-        return new Element(page,"//input[@type = 'password']");
+    private TextField getPasswordField(){
+        return new TextField(page,"//input[@type = 'password']");
     }
 
-    public Element getSubmitButton(){
-        return new Element(page, "button[type = 'submit']");
+    private Button getSubmitButton(){
+        return new Button(page, "button[type = 'submit']", "Submit Login form button");
     }
 
-    public Element getValidationMessageForCreds(){
-        return new Element(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
+    private Message getValidationMessageForCreds(){
+        return new Message(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
     }
 
     public boolean isLogoVisible(){
@@ -34,21 +38,20 @@ public class LoginPage extends BasePage{
     }
 
     public void fillUserNameField(String userName){
-        getUserNameField().fillField(userName);
+        getUserNameField().fillTextField(userName);
     }
 
     public void fillPasswordField(String password){
-        getPasswordField().fillField(password);
+        getPasswordField().fillTextField(password);
     }
 
     public void clickSubmitButton(){
-        getSubmitButton().click();
+        getSubmitButton().clickButton();
     }
 
     public String getValidationMessageTextForCreds() {
-        Element validationMessageForCreds = getValidationMessageForCreds();
-        validationMessageForCreds.waitForXPathToBeAvailable();
-        return validationMessageForCreds.getTextContent();
+        Message validationMessageForCreds = getValidationMessageForCreds();
+        validationMessageForCreds.waitForMessageToBeAvailable();
+        return validationMessageForCreds.getMessageText();
     }
-
 }

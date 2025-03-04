@@ -1,6 +1,5 @@
 package com.qa.orangehr.pages;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 public class BasePage {
@@ -10,7 +9,7 @@ public class BasePage {
         this.page = page;
     }
 
-    protected Locator getLocator(String xPath) {
+/*    protected Locator getLocator(String xPath) {
         return page.locator(xPath);
-    }
+    }*/
 }

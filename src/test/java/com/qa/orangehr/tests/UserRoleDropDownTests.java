@@ -1,7 +1,6 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
-import com.qa.orangehr.elements.DropDownElement;
 import com.qa.orangehr.pages.AdminUserManagementPage;
 import com.qa.orangehr.pages.DashboardPage;
 import org.junit.jupiter.api.Assertions;
@@ -20,9 +19,8 @@ public class UserRoleDropDownTests extends BaseTest {
         dashboardPage.clickOptionInSearch("Admin");
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
-        DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
         List<String> expectedOptionsText = Arrays.asList("Admin", "ESS");
-        List<String> actualOptionsText = userRoleDropDown.getDropDownOptionsText();
+        List<String> actualOptionsText = adminUserManagementPage.getAllUserRoleDropDownOptions();
         Assertions.assertEquals(expectedOptionsText, actualOptionsText);
 
         int optionsCountActual = actualOptionsText.size();
@@ -38,11 +36,10 @@ public class UserRoleDropDownTests extends BaseTest {
         dashboardPage.clickOptionInSearch("Admin");
 
         AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
-        DropDownElement userRoleDropDown = adminUserManagementPage.getUserRoleDropDown();
-        userRoleDropDown.chooseDropDownOption("Admin");
-        Assertions.assertEquals("Admin", userRoleDropDown.getSetDropDownOption());
+        adminUserManagementPage.chooseUserRoleDropDownOption("Admin");
+        Assertions.assertEquals("Admin", adminUserManagementPage.getSetUserRoleDropDownOption());
 
-        userRoleDropDown.resetDropDownOptions();
-        Assertions.assertEquals("-- Select --", userRoleDropDown.getSetDropDownOption());
+        adminUserManagementPage.resetUserRoleDropDownOption();
+        Assertions.assertEquals("-- Select --",adminUserManagementPage.getSetUserRoleDropDownOption());
     }
 }

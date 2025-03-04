@@ -2,7 +2,7 @@ package com.qa.orangehr.pages;
 
 import com.microsoft.playwright.Page;
 import com.qa.orangehr.elements.Element;
-import com.qa.orangehr.elements.MenuElement;
+import com.qa.orangehr.elements.DropDownMenu;
 
 public class DashboardPage extends BasePage{
 
@@ -10,20 +10,20 @@ public class DashboardPage extends BasePage{
         super(page);
     }
 
-    public MenuElement getUserMenu(){
-        return new MenuElement(page, "//li[contains(@class, 'oxd-userdropdown')]");
+    private DropDownMenu getUserMenu(){
+        return new DropDownMenu(page, "//li[contains(@class, 'oxd-userdropdown')]");
+    }
+    //will not implement separate wrapper
+    private Element getOptionInSearch(String option) {
+        return new Element(page, String.format("//a//*[text()='%s']", option));
     }
 
     public boolean isUserMenuVisible(){
         return getUserMenu().isVisible();
     }
 
-    public Element getOptionInSearch(String option) {
-        return new Element(page, String.format("//a//*[text()='%s']", option));
-    }
-
     public void clickOptionInSearch(String option){
-        getOptionInSearch(option).waitForXPathToBeAvailable();
+        getOptionInSearch(option).waitForElementToBeAvailable();
         getOptionInSearch(option).click();
     }
 
