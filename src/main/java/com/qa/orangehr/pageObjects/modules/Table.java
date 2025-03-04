@@ -1,7 +1,7 @@
-package com.qa.orangehr.modules;
+package com.qa.orangehr.pageObjects.modules;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.elements.Element;
+import com.qa.orangehr.pageObjects.elements.Element;
 
 import java.util.List;
 

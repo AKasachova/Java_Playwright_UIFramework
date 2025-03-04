@@ -1,7 +1,7 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
-import com.qa.orangehr.pages.DashboardPage;
+import com.qa.orangehr.pageObjects.pages.DashboardPage;
 import org.junit.jupiter.api.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

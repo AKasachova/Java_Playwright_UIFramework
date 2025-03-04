@@ -1,10 +1,10 @@
-package com.qa.orangehr.pages;
+package com.qa.orangehr.pageObjects.pages;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.elements.Button;
-import com.qa.orangehr.elements.Element;
-import com.qa.orangehr.elements.Message;
-import com.qa.orangehr.elements.TextField;
+import com.qa.orangehr.pageObjects.elements.Button;
+import com.qa.orangehr.pageObjects.elements.Element;
+import com.qa.orangehr.pageObjects.elements.Message;
+import com.qa.orangehr.pageObjects.elements.TextField;
 
 public class LoginPage extends BasePage{
 
