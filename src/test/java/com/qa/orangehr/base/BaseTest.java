@@ -3,10 +3,10 @@ package com.qa.orangehr.base;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.pageObjects.pages.LoginPage;
-import com.qa.orangehr.utils.config.ConfigUtils;
+import com.qa.orangehr.orangePageOb.LoginPage;
+import com.qa.orangehr.framework.utils.config.ConfigUtils;
 
-import com.qa.orangehr.utils.manager.BrowserManager;
+import com.qa.orangehr.framework.manager.BrowserManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

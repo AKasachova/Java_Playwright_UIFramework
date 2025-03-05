@@ -1,12 +1,13 @@
-package com.qa.orangehr.pageObjects.pages;
+package com.qa.orangehr.orangePageOb;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.pageObjects.elements.Button;
-import com.qa.orangehr.pageObjects.elements.Element;
-import com.qa.orangehr.pageObjects.elements.Message;
-import com.qa.orangehr.pageObjects.elements.TextField;
+import com.qa.orangehr.framework.elements.Button;
+import com.qa.orangehr.framework.elements.Element;
+import com.qa.orangehr.framework.elements.Message;
+import com.qa.orangehr.framework.elements.TextField;
+import com.qa.orangehr.framework.pages.BasePage;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     public LoginPage(Page page){
         super(page);
@@ -26,11 +27,13 @@ public class LoginPage extends BasePage{
     }
 
     private Button getSubmitButton(){
-        return new Button(page, "button[type = 'submit']", "Submit Login form button");
+        return new Button(page, "button[type = 'submit']",
+                "Submit Login form button");
     }
 
     private Message getValidationMessageForCreds(){
-        return new Message(page, "//div[@class='orangehrm-login-error']//p[contains(@class,'oxd-alert-content-text')]");
+        return new Message(page, "//div[@class='orangehrm-login-error']" +
+                "//p[contains(@class,'oxd-alert-content-text')]");
     }
 
     public boolean isLogoVisible(){

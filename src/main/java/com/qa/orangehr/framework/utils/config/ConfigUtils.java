@@ -1,4 +1,4 @@
-package com.qa.orangehr.utils.config;
+package com.qa.orangehr.framework.utils.config;
 
 import java.io.*;
 import java.util.Properties;

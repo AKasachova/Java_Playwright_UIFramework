@@ -1,12 +1,13 @@
-package com.qa.orangehr.pageObjects.pages;
+package com.qa.orangehr.orangePageOb;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.pageObjects.elements.DropDown;
-import com.qa.orangehr.pageObjects.modules.Table;
+import com.qa.orangehr.framework.elements.DropDown;
+import com.qa.orangehr.framework.modules.Table;
+import com.qa.orangehr.framework.pages.BasePage;
 
 import java.util.List;
 
-public class AdminUserManagementPage extends BasePage{
+public class AdminUserManagementPage extends BasePage {
 
     public AdminUserManagementPage(Page page) {
         super(page);

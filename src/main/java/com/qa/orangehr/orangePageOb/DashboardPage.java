@@ -1,17 +1,19 @@
-package com.qa.orangehr.pageObjects.pages;
+package com.qa.orangehr.orangePageOb;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.pageObjects.elements.Element;
-import com.qa.orangehr.pageObjects.elements.DropDownMenu;
+import com.qa.orangehr.framework.elements.Element;
+import com.qa.orangehr.framework.elements.DropDownMenu;
+import com.qa.orangehr.framework.pages.BasePage;
 
-public class DashboardPage extends BasePage{
+public class DashboardPage extends BasePage {
 
     public DashboardPage(Page page) {
         super(page);
     }
 
     private DropDownMenu getUserMenu(){
-        return new DropDownMenu(page, "//li[contains(@class, 'oxd-userdropdown')]");
+        return new DropDownMenu(page,
+                "//li[contains(@class, 'oxd-userdropdown')]");
     }
     //will not implement separate wrapper
     private Element getOptionInSearch(String option) {

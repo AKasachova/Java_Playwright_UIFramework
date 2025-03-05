@@ -1,4 +1,4 @@
-package com.qa.orangehr.pageObjects.pages;
+package com.qa.orangehr.framework.pages;
 
 import com.microsoft.playwright.Page;
 
