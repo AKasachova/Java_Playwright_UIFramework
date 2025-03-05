@@ -1,4 +1,4 @@
-package com.qa.orangehr.pageObjects.elements;
+package com.qa.orangehr.framework.elements;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -19,7 +19,7 @@ public class Element {
         this.comment = comment;
     }
 
-    private Locator getElement() {
+    protected Locator getElement() {
         return page.locator(elementSelector);
     }
 

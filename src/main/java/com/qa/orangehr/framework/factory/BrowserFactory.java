@@ -1,4 +1,4 @@
-package com.qa.orangehr.utils.factory;
+package com.qa.orangehr.framework.factory;
 
 import com.microsoft.playwright.*;
 import java.util.Properties;

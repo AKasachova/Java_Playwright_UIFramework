@@ -1,7 +1,7 @@
-package com.qa.orangehr.pageObjects.modules;
+package com.qa.orangehr.framework.modules;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.pageObjects.elements.Element;
+import com.qa.orangehr.framework.elements.Element;
 
 import java.util.List;
 
@@ -14,7 +14,8 @@ public class Table extends Element {
     }
 
     public List<String> getColumnValues(String columnName){
-       String headerColumnXPath = String.format("%s//div[@role='columnheader' and text()='%s']", this.tableSelector, columnName);
+       String headerColumnXPath = String.format("%s//div[@role='columnheader' and text()='%s']",
+               this.tableSelector, columnName);
        String columnValuesXPath = String.format("%s//div[@class='oxd-table-body']//div[@role='row']/div[count(%s/preceding-sibling::div) + 1]", this.tableSelector,headerColumnXPath);
        return page.locator(columnValuesXPath).allInnerTexts();
     }
