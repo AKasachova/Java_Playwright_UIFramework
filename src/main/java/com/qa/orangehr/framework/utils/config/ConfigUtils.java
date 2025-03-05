@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 public class ConfigUtils {
-    private static Properties prop;
+    public static Properties prop;
 
     public static Properties getConfigProperties() {
         if (prop == null) {

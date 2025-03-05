@@ -3,8 +3,8 @@ package com.qa.orangehr.framework.manager;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
+import com.qa.orangehr.framework.factory.BrowserFactoryProvider;
 import com.qa.orangehr.framework.utils.config.ConfigUtils;
-import com.qa.orangehr.framework.factory.BrowserFactory;
 
 public class BrowserManager {
     private static Browser browser;
@@ -12,7 +12,7 @@ public class BrowserManager {
 
     public static Browser getBrowser() {
         if (browser == null) {
-            browser = new BrowserFactory().getBrowser(ConfigUtils.getConfigProperties());
+            browser = BrowserFactoryProvider.getBrowser(ConfigUtils.getConfigProperties());
         }
         return browser;
     }
