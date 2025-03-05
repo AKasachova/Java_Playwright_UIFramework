@@ -3,7 +3,7 @@ package com.qa.orangehr.base;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.orangePageOb.LoginPage;
+import com.qa.orangehr.orangePageObjects.LoginPage;
 import com.qa.orangehr.framework.utils.config.ConfigUtils;
 
 import com.qa.orangehr.framework.manager.BrowserManager;

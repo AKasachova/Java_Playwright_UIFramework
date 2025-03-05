@@ -1,4 +1,4 @@
-package com.qa.orangehr.orangePageOb;
+package com.qa.orangehr.orangePageObjects;
 
 import com.microsoft.playwright.Page;
 import com.qa.orangehr.framework.elements.Button;

@@ -1,8 +1,8 @@
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
-import com.qa.orangehr.orangePageOb.AdminUserManagementPage;
-import com.qa.orangehr.orangePageOb.DashboardPage;
+import com.qa.orangehr.orangePageObjects.AdminUserManagementPage;
+import com.qa.orangehr.orangePageObjects.DashboardPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

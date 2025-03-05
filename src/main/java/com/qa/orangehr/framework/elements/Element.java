@@ -19,7 +19,7 @@ public class Element {
         this.comment = comment;
     }
 
-    private Locator getElement() {
+    protected Locator getElement() {
         return page.locator(elementSelector);
     }
 
