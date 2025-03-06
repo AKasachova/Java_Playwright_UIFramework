@@ -5,9 +5,8 @@ import com.qa.orangehr.framework.elements.Button;
 import com.qa.orangehr.framework.elements.Element;
 import com.qa.orangehr.framework.elements.Message;
 import com.qa.orangehr.framework.elements.TextField;
-import com.qa.orangehr.framework.pages.BasePage;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends OrangeBasePage {
     private String logoSelector = "//div[@class='orangehrm-login-branding']";
     private String userNameFieldSelector = "//input[@name = 'username']";
     private String passwordFieldSelector = "//input[@type = 'password']";
@@ -19,7 +18,6 @@ public class LoginPage extends BasePage {
         super(page);
     }
 
-    //will not implement separate wrapper
     private Element getLogo(){
         return new Element(page, logoSelector);
     }

@@ -3,6 +3,7 @@ package com.qa.orangehr.base;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
+import com.qa.orangehr.framework.manager.ContextManager;
 import com.qa.orangehr.orangePageObjects.LoginPage;
 import com.qa.orangehr.framework.utils.config.ConfigUtils;
 
@@ -22,21 +23,20 @@ public class BaseTest {
     protected String passwordInvalid = "password";
 
     @BeforeAll
-    public static void setUpTestSuit(){
+    public static void setUpTestSuit() {
         browser = BrowserManager.getBrowser();
     }
 
     @BeforeEach
-    public void setUpContextAndPage(){
-        context = BrowserManager.getBrowserContext(browser);
-        page = BrowserManager.getNewPage(context);
+    public void setUpContextAndPage() {
+        context = ContextManager.getBrowserContext(browser);
+        page = ContextManager.getNewPage(context);
         loginPage = new LoginPage(page);
     }
 
     @AfterEach
-    public void tearDown(){
-
-        BrowserManager.closeContext();
+    public void tearDown() {
+        ContextManager.closeContext();
     }
 
     @AfterAll
@@ -44,7 +44,7 @@ public class BaseTest {
         BrowserManager.closeBrowser();
     }
 
-    public void logInAsAdmin(){
+    public void logInAsAdmin() {
         loginPage.fillUserNameField(ConfigUtils.getConfigProperties().getProperty("userNameAdmin"));
         loginPage.fillPasswordField(ConfigUtils.getConfigProperties().getProperty("passwordAdmin"));
         loginPage.clickSubmitButton();

@@ -5,10 +5,9 @@ import com.qa.orangehr.framework.elements.DropDown;
 import com.qa.orangehr.framework.elements.TopBar;
 import com.qa.orangehr.framework.elements.TopBarBreadscrumb;
 import com.qa.orangehr.framework.modules.Table;
-import com.qa.orangehr.framework.pages.BasePage;
 import java.util.List;
 
-public class AdminUserManagementPage extends BasePage {
+public class AdminUserManagementPage extends OrangeBasePage {
     private String userRoleDropDownSelector = "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]"
             + "//div[@class='oxd-select-wrapper']";
     private String recordsFoundTableSelector = "//div[@class='oxd-table']";

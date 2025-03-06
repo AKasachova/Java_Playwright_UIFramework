@@ -2,31 +2,34 @@ package com.qa.orangehr.framework.factory;
 
 import com.microsoft.playwright.*;
 import com.qa.orangehr.framework.enams.BrowserName;
-
-import java.util.Properties;
+import com.qa.orangehr.framework.utils.config.ConfigUtils;
 
 public class BrowserFactoryProvider {
-    public static Browser getBrowser(Properties prop) {
+    public static Browser getBrowser(String browserName) {
         Playwright playwright = Playwright.create();
-        BrowserName browserName = BrowserName.getBrowserName((prop.getProperty("browser")));
         BrowserFactory factory;
+        String browserEnum = BrowserName.getBrowserNameByEnumValue(browserName);
 
-        switch (browserName) {
-            case CHROMIUM:
+        switch (browserEnum) {
+            case "chromium":
                 factory = new ChromiumFactory();
                 break;
-            case FIREFOX:
+            case "firefox":
                 factory = new FirefoxFactory();
                 break;
-            case SAFARI:
+            case "safari":
                 factory = new SafariFactory();
                 break;
-            case CHROME:
+            case "chrome":
                 factory = new ChromeFactory();
                 break;
             default:
                 throw new IllegalArgumentException("Invalid browser name: " + browserName);
         }
         return factory.createBrowser(playwright);
+    }
+
+    public static Browser getBrowser() {
+        return getBrowser( ConfigUtils.getConfigProperties().getProperty("browser"));
     }
 }
