@@ -1,25 +1,27 @@
 package com.qa.orangehr.framework.factory;
 
 import com.microsoft.playwright.*;
+import com.qa.orangehr.framework.enams.BrowserName;
+
 import java.util.Properties;
 
 public class BrowserFactoryProvider {
     public static Browser getBrowser(Properties prop) {
         Playwright playwright = Playwright.create();
-        String browserName = prop.getProperty("browser").trim().toLowerCase();
+        BrowserName browserName = BrowserName.getBrowserName((prop.getProperty("browser")));
         BrowserFactory factory;
 
         switch (browserName) {
-            case "chromium":
+            case CHROMIUM:
                 factory = new ChromiumFactory();
                 break;
-            case "firefox":
+            case FIREFOX:
                 factory = new FirefoxFactory();
                 break;
-            case "safari":
+            case SAFARI:
                 factory = new SafariFactory();
                 break;
-            case "chrome":
+            case CHROME:
                 factory = new ChromeFactory();
                 break;
             default:
