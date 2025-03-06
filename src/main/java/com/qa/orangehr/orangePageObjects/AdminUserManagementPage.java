@@ -6,21 +6,23 @@ import com.qa.orangehr.framework.elements.TopBar;
 import com.qa.orangehr.framework.elements.TopBarBreadscrumb;
 import com.qa.orangehr.framework.modules.Table;
 import com.qa.orangehr.framework.pages.BasePage;
-
 import java.util.List;
 
 public class AdminUserManagementPage extends BasePage {
+    private String userRoleDropDownSelector = "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]"
+            + "//div[@class='oxd-select-wrapper']";
+    private String recordsFoundTableSelector = "//div[@class='oxd-table']";
 
     public AdminUserManagementPage(Page page) {
         super(page);
     }
 
     private DropDown getUserRoleDropDown() {
-        return new DropDown(page, "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]//div[@class='oxd-select-wrapper']");
+        return new DropDown(page, userRoleDropDownSelector);
     }
 
     private Table getRecordsFoundTable(){
-        return new Table(page, "//div[@class='oxd-table']");
+        return new Table(page, recordsFoundTableSelector);
     }
 
     protected TopBar topBar = new TopBar(page,topBarSelector, new TopBarBreadscrumb(page, topBarBreadscrumbSelector));
