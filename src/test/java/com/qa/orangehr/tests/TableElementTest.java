@@ -28,4 +28,13 @@ public class TableElementTest extends BaseTest {
         String actualEmployeeName = adminUserManagementPage.getCellValueForRecordsFoundTable("Employee Name", 2);
         Assertions.assertEquals(expectedEmployeeName, actualEmployeeName);
         }
+
+        @Test
+        public void topBarTextOnDashboardPageIsValid(){
+            logInAsAdmin();
+
+            AdminUserManagementPage adminUserManagementPage = new AdminUserManagementPage(page);
+            String actualTopBarText = adminUserManagementPage.getTopBarText();
+            Assertions.assertEquals("Dashboard", actualTopBarText);
+        }
     }

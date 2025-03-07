@@ -5,35 +5,37 @@ import com.qa.orangehr.framework.elements.Button;
 import com.qa.orangehr.framework.elements.Element;
 import com.qa.orangehr.framework.elements.Message;
 import com.qa.orangehr.framework.elements.TextField;
-import com.qa.orangehr.framework.pages.BasePage;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends OrangeBasePage {
+    private String logoSelector = "//div[@class='orangehrm-login-branding']";
+    private String userNameFieldSelector = "//input[@name = 'username']";
+    private String passwordFieldSelector = "//input[@type = 'password']";
+    private String submitButtonSelector = "button[type = 'submit']";
+    private String validationMessageForCredsSelector = "//div[@class='orangehrm-login-error']" +
+            "//p[contains(@class,'oxd-alert-content-text')]";
 
     public LoginPage(Page page){
         super(page);
     }
 
-    //will not implement separate wrapper
     private Element getLogo(){
-        return new Element(page, "//div[@class='orangehrm-login-branding']");
+        return new Element(page, logoSelector);
     }
 
     private TextField getUserNameField(){
-        return new TextField(page, "//input[@name = 'username']");
+        return new TextField(page, userNameFieldSelector);
     }
 
     private TextField getPasswordField(){
-        return new TextField(page,"//input[@type = 'password']");
+        return new TextField(page, passwordFieldSelector);
     }
 
     private Button getSubmitButton(){
-        return new Button(page, "button[type = 'submit']",
-                "Submit Login form button");
+        return new Button(page, submitButtonSelector, "Submit Login form button");
     }
 
     private Message getValidationMessageForCreds(){
-        return new Message(page, "//div[@class='orangehrm-login-error']" +
-                "//p[contains(@class,'oxd-alert-content-text')]");
+        return new Message(page, validationMessageForCredsSelector);
     }
 
     public boolean isLogoVisible(){
