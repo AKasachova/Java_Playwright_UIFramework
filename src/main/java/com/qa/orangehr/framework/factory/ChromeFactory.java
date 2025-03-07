@@ -4,7 +4,7 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
 
-public class ChromeFactory implements BrowserFactory {
+public class ChromeFactory implements BrowserInterface {
     @Override
     public Browser createBrowser(Playwright playwright) {
         return playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome")

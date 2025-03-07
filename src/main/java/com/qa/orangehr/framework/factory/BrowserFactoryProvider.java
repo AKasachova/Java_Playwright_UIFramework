@@ -5,22 +5,21 @@ import com.qa.orangehr.framework.enams.BrowserName;
 import com.qa.orangehr.framework.utils.config.ConfigUtils;
 
 public class BrowserFactoryProvider {
-    public static Browser getBrowser(String browserName) {
+    public static Browser getBrowser(BrowserName browserName) {
         Playwright playwright = Playwright.create();
-        BrowserFactory factory;
-        String browserEnum = BrowserName.getBrowserNameByEnumValue(browserName);
+        BrowserInterface factory;
 
-        switch (browserEnum) {
-            case "chromium":
+        switch (browserName) {
+            case CHROMIUM:
                 factory = new ChromiumFactory();
                 break;
-            case "firefox":
+            case FIREFOX:
                 factory = new FirefoxFactory();
                 break;
-            case "safari":
+            case SAFARI:
                 factory = new SafariFactory();
                 break;
-            case "chrome":
+            case CHROME:
                 factory = new ChromeFactory();
                 break;
             default:
@@ -29,7 +28,11 @@ public class BrowserFactoryProvider {
         return factory.createBrowser(playwright);
     }
 
+    public static Browser getBrowser(String browserName) {
+        return getBrowser(BrowserName.valueOf(browserName.toUpperCase()));
+    }
+
     public static Browser getBrowser() {
-        return getBrowser( ConfigUtils.getConfigProperties().getProperty("browser"));
+        return getBrowser(BrowserName.valueOf(ConfigUtils.getConfigProperties().getProperty("browser").toUpperCase()));
     }
 }

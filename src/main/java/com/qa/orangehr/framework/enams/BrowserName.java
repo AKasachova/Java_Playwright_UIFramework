@@ -15,12 +15,4 @@ public enum BrowserName {
     public String getBrowserName() {
         return browserName;
     }
-
-    public static String getBrowserNameByEnumValue(String browserNameValue) {
-        try {
-            return BrowserName.valueOf(browserNameValue.toUpperCase()).getBrowserName();
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid browser name: " + browserNameValue, e);
-        }
-    }
 }

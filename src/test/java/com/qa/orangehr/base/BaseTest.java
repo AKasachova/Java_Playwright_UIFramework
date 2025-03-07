@@ -29,8 +29,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUpContextAndPage() {
-        context = ContextManager.getBrowserContext(browser);
-        page = ContextManager.getNewPage(context);
+        page = ContextManager.getNewPage(browser);
         loginPage = new LoginPage(page);
     }
 

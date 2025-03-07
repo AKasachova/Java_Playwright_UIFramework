@@ -12,8 +12,14 @@ public class ContextManager {
         return browser.newContext();
     }
 
-    public static Page getNewPage(BrowserContext browserContext) {
-        Page page = browserContext.newPage();
+    public static Page getNewPage(Browser browser, String url) {
+        Page page = getBrowserContext(browser).newPage();
+        page.navigate(url);
+        return page;
+    }
+
+    public static Page getNewPage(Browser browser) {
+        Page page = getBrowserContext(browser).newPage();
         page.navigate(ConfigUtils.getConfigProperties().getProperty("URL").trim());
         return page;
     }
