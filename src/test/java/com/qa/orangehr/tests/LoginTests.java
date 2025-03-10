@@ -42,5 +42,7 @@ public class LoginTests extends BaseTest {
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.logOutFromTheApp();
         Assertions.assertTrue(loginPage.isLogoVisible());
+
+
     }
 }

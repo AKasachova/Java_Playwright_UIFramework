@@ -1,9 +1,9 @@
-package com.qa.orangehr.framework.manager;
+package com.qa.userinyerface.framework.manager;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.framework.utils.config.ConfigUtils;
+import com.qa.userinyerface.framework.utils.config.ConfigUtils;
 
 public class ContextManager {
     private static BrowserContext browserContext;
@@ -20,7 +20,7 @@ public class ContextManager {
 
     public static Page getNewPage(Browser browser) {
         Page page = getBrowserContext(browser).newPage();
-        page.navigate(ConfigUtils.getConfigProperties().getProperty("urlOrangehr").trim());
+        page.navigate(ConfigUtils.getConfigProperties().getProperty("urlUserinyerface").trim());
         return page;
     }
 
