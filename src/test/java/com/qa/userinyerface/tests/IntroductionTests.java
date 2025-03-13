@@ -1,13 +1,12 @@
 package com.qa.userinyerface.tests;
 
-import com.microsoft.playwright.Page;
 import com.qa.userinyerface.base.base.BaseTest;
 import com.qa.userinyerface.framework.utils.modalhandler.ModalHandler;
 import com.qa.userinyerface.userinyerfacePageObjects.GamePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class IntrodactionTests extends BaseTest {
+public class IntroductionTests extends BaseTest {
     @Test
     public void userFormNavigationSuccessful() throws InterruptedException {
 
@@ -39,7 +38,6 @@ public class IntrodactionTests extends BaseTest {
         String pageIndicatorTextActual2 = gamePage.getPageIndicatorText();
         String pageIndicatorTextExpected2 = "2 / 4";
         Assertions.assertEquals(pageIndicatorTextExpected2, pageIndicatorTextActual2);
-
 
         modalHandler.stopWatching();
     }

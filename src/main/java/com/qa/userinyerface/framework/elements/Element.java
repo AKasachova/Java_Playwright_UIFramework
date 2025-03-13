@@ -29,7 +29,6 @@ public class Element {
 
     public void click() {
         getElement().click();
-        //.click(new Locator.ClickOptions().setForce(true))
     }
 
     public void fillField(String text) {
