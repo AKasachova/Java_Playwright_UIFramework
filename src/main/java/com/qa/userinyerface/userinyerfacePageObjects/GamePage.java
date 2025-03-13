@@ -1,10 +1,10 @@
 package com.qa.userinyerface.userinyerfacePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.userinyerface.framework.elements.*;
-import com.qa.userinyerface.framework.forms.ModalWindow;
-import com.qa.userinyerface.framework.pages.BasePage;
-import com.qa.userinyerface.framework.utils.dataGenerator.RandomDataGenerator;
+import com.qa.framework.elements.*;
+import com.qa.framework.forms.ModalWindow;
+import com.qa.framework.pages.BasePage;
+import com.qa.framework.utils.dataGenerator.RandomDataGenerator;
 
 public class GamePage extends BasePage {
 
@@ -49,7 +49,6 @@ public class GamePage extends BasePage {
     private Button getTermsOfUseModalAcceptButton() {
         return new Button(page, termsOfUseModalAcceptButtonSelector);
     }
-
 
     private ModalWindow getTermsOfUseModalWindow() {
         return new ModalWindow(page, termsOfUseModalWindowSelector, getTermsOfUseModalAcceptButton());

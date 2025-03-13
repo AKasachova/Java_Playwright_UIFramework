@@ -1,10 +1,10 @@
 package com.qa.orangehr.orangePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.framework.elements.DropDown;
-import com.qa.orangehr.framework.elements.TopBar;
-import com.qa.orangehr.framework.elements.TopBarBreadscrumb;
-import com.qa.orangehr.framework.modules.Table;
+import com.qa.framework.elements.DropDown;
+import com.qa.framework.elements.TopBar;
+import com.qa.framework.elements.TopBarBreadscrumb;
+import com.qa.framework.modules.Table;
 import java.util.List;
 
 public class AdminUserManagementPage extends OrangeBasePage {
