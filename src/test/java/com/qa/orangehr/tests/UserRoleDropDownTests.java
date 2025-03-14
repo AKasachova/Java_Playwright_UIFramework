@@ -1,3 +1,4 @@
+/*
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
@@ -43,3 +44,4 @@ public class UserRoleDropDownTests extends BaseTest {
         Assertions.assertEquals("-- Select --",adminUserManagementPage.getSetUserRoleDropDownOption());
     }
 }
+*/

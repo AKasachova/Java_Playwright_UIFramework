@@ -11,7 +11,7 @@ public class DropDownMenu extends DropDown {
     }
 
     @Override
-    public String getDropDownOptionsWithoutDefaultXPath(){
-        return String.format("%s//ul[@role='menu']//li",  this.dropDownMenuSelector);
+    public String getDropDownOptionsWithoutDefaultXPath(String dropDownOptionsWithoutDefaultSelector){
+        return String.format("%s" + dropDownOptionsWithoutDefaultSelector,  this.dropDownMenuSelector);
     }
 }

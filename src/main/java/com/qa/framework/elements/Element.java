@@ -51,7 +51,7 @@ public class Element {
         return getElement().isEnabled();
     }
 
-    public String getAttribute(String attribute) {
+/*    public String getAttribute(String attribute) {
         return getElement().getAttribute(attribute);
-    }
+    }*/
 }

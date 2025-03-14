@@ -18,9 +18,14 @@ public class ContextManager {
         return page;
     }
 
-    public static Page getNewPage(Browser browser) {
+    public static Page getNewPage(Browser browser, String urlCurrentProg, String commment) {
         Page page = getBrowserContext(browser).newPage();
-        page.navigate(ConfigUtils.getConfigProperties().getProperty("urlOrangehr").trim());
+        //todo
+        if (urlCurrentProg == "urlOrangehr") {
+            page.navigate(ConfigUtils.getConfigProperties().getProperty("urlOrangehr").trim());
+        } else if (urlCurrentProg == "urlUserinyerface") {
+            page.navigate(ConfigUtils.getConfigProperties().getProperty("urlUserinyerface").trim());
+        }
         return page;
     }
 

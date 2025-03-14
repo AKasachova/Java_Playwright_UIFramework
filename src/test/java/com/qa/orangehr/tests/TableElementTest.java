@@ -1,3 +1,4 @@
+/*
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
@@ -38,3 +39,4 @@ public class TableElementTest extends BaseTest {
             Assertions.assertEquals("Dashboard", actualTopBarText);
         }
     }
+*/

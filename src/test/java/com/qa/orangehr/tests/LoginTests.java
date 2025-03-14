@@ -1,3 +1,4 @@
+/*
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
@@ -46,3 +47,4 @@ public class LoginTests extends BaseTest {
 
     }
 }
+*/

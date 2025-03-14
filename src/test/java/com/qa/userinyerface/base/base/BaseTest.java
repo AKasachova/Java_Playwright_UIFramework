@@ -17,8 +17,6 @@ public class BaseTest {
     protected Page page;
     protected HomePage homePage;
 
-//    protected String userNameInvalid = "userName";
-//    protected String passwordInvalid = "password";
 
     @BeforeAll
     public static void setUpTestSuit() {
@@ -27,7 +25,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUpContextAndPage() {
-        page = ContextManager.getNewPage(browser);
+        page = ContextManager.getNewPage(browser, "urlUserinyerface", "Userinyerface");
         homePage = new HomePage(page);
     }
 
@@ -41,9 +39,4 @@ public class BaseTest {
         BrowserManager.closeBrowser();
     }
 
-//    public void logInAsAdmin() {
-//        loginPage.fillUserNameField(ConfigUtils.getConfigProperties().getProperty("userNameAdmin"));
-//        loginPage.fillPasswordField(ConfigUtils.getConfigProperties().getProperty("passwordAdmin"));
-//        loginPage.clickSubmitButton();
-//    }
 }

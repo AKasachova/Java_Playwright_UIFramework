@@ -29,7 +29,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUpContextAndPage() {
-        page = ContextManager.getNewPage(browser);
+        page = ContextManager.getNewPage(browser, "urlOrangehr", "orangeHr");
         loginPage = new LoginPage(page);
     }
 

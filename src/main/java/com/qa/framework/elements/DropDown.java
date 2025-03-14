@@ -13,37 +13,40 @@ public class DropDown extends Element {
         this.dropDownSelector = dropDownSelector;
     }
 
-    public Element getDropDownCaretDown(){
-        String userRoleDropDownCaretDownXPath = String.format("%s//i[contains(@class, 'bi-caret-down-fill')]",
+    private Element getDropDownCaretDown(String caretDownSelector){
+        String userRoleDropDownCaretDownXPath = String.format("%s" + caretDownSelector,
                 this.dropDownSelector);
         return new Element(page, userRoleDropDownCaretDownXPath);
     }
 
-    public String getDropDownOptionsWithoutDefaultXPath(){
-        return String.format("%s//div[@class='oxd-select-option']//span",  this.dropDownSelector);
+    protected String getDropDownOptionsWithoutDefaultXPath(String dropDownOptionsWithoutDefaultSelector){
+        return String.format("%s" + dropDownOptionsWithoutDefaultSelector,  this.dropDownSelector);
     }
 
-    public String getDropDownOptionsWithDefaultXPath(){
-        return String.format("%s//div[@class='oxd-select-option']",  this.dropDownSelector);
+    private String getDropDownOptionsWithDefaultXPath(String dropDownOptionsWithDefaultSelector){
+        return String.format("%s" + dropDownOptionsWithDefaultSelector,  this.dropDownSelector);
     }
 
-    public void expandDropDown(){
-        if (getDropDownCaretDown().isVisible()){
-            getDropDownCaretDown().click();
+    public void expandDropDown(String caretDownSelector){
+        if (getDropDownCaretDown(caretDownSelector).isVisible()){
+            getDropDownCaretDown(caretDownSelector).click();
         }
     }
 
-    public List<Locator> getAllDropDownOptionsWithoutDefault(){
-        return page.locator(getDropDownOptionsWithoutDefaultXPath()).all();
+    public void expandDropDown(){
+        click();
     }
 
-    public List<Locator> getAllDropDownOptionsWithDefault(){
-        return page.locator(getDropDownOptionsWithDefaultXPath()).all();
+    public List<Locator> getAllDropDownOptionsWithoutDefault(String dropDownOptionsWithoutDefaultSelector){
+        return page.locator(getDropDownOptionsWithoutDefaultXPath(dropDownOptionsWithoutDefaultSelector)).all();
     }
 
-    public void chooseDropDownOption(String optionToChoose) {
-        expandDropDown();
-        List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
+    public List<Locator> getAllDropDownOptionsWithDefault(String dropDownOptionsWithDefaultSelector) {
+        return page.locator(getDropDownOptionsWithDefaultXPath(dropDownOptionsWithDefaultSelector)).all();
+    }
+
+    public void chooseDropDownOption(String optionToChoose, String dropDownOptionsWithoutDefaultSelector) {
+        List<Locator> allOptions = getAllDropDownOptionsWithoutDefault(dropDownOptionsWithoutDefaultSelector);
         for (Locator option : allOptions) {
             if (option.textContent().equals(optionToChoose)) {
                 option.click();
@@ -52,9 +55,8 @@ public class DropDown extends Element {
         }
     }
 
-    public void resetDropDownOptions() {
-        expandDropDown();
-        List<Locator> allOptions = getAllDropDownOptionsWithDefault();
+    public void resetDropDownOptions(String dropDownOptionsWithDefaultSelector) {
+        List<Locator> allOptions = getAllDropDownOptionsWithDefault(dropDownOptionsWithDefaultSelector);
         if (!allOptions.isEmpty()) {
             allOptions.get(0).click();
         } else {
@@ -62,9 +64,8 @@ public class DropDown extends Element {
         }
     }
 
-    public List<String> getDropDownOptionsText() {
-        expandDropDown();
-        List<Locator> allOptions = getAllDropDownOptionsWithoutDefault();
+    public List<String> getDropDownOptionsText(String dropDownOptionsWithoutDefaultSelector) {
+        List<Locator> allOptions = getAllDropDownOptionsWithoutDefault(dropDownOptionsWithoutDefaultSelector);
         return allOptions.stream()
                                 .map(locator -> locator.innerText().trim())
                                 .collect(Collectors.toList());

@@ -6,6 +6,7 @@ import com.qa.framework.elements.DropDownMenu;
 
 public class DashboardPage extends OrangeBasePage {
     private String dropDownMenuSelector = "//li[contains(@class, 'oxd-userdropdown')]";
+    private String dropDownOptionsWithoutDefaultSelector = "//ul[@role='menu']//li";
 
     public DashboardPage(Page page) {
         super(page);
@@ -29,6 +30,6 @@ public class DashboardPage extends OrangeBasePage {
     }
 
     public void logOutFromTheApp(){
-        getUserMenu().chooseDropDownOption("Logout");
+        getUserMenu().chooseDropDownOption("Logout", dropDownOptionsWithoutDefaultSelector);
     }
 }
