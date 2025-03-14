@@ -21,9 +21,9 @@ public class ContextManager {
     public static Page getNewPage(Browser browser, String urlCurrentProg, String commment) {
         Page page = getBrowserContext(browser).newPage();
         //todo
-        if (urlCurrentProg == "urlOrangehr") {
+        if (urlCurrentProg.equals("urlOrangehr")) {
             page.navigate(ConfigUtils.getConfigProperties().getProperty("urlOrangehr").trim());
-        } else if (urlCurrentProg == "urlUserinyerface") {
+        } else if (urlCurrentProg.equals("urlUserinyerface")) {
             page.navigate(ConfigUtils.getConfigProperties().getProperty("urlUserinyerface").trim());
         }
         return page;
