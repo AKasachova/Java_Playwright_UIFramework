@@ -1,7 +1,7 @@
 package com.qa.orangehr.orangePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.framework.pages.BasePage;
+import com.qa.framework.pages.BasePage;
 
 public class OrangeBasePage extends BasePage {
     protected String topBarSelector = "//header/div[contains(@class,'oxd-topbar-header')]";

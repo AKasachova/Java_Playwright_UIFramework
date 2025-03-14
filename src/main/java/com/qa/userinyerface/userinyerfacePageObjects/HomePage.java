@@ -1,10 +1,10 @@
 package com.qa.userinyerface.userinyerfacePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.userinyerface.framework.elements.Element;
-import com.qa.userinyerface.framework.elements.Link;
-import com.qa.userinyerface.framework.elements.Message;
-import com.qa.userinyerface.framework.pages.BasePage;
+import com.qa.framework.elements.Element;
+import com.qa.framework.elements.Link;
+import com.qa.framework.elements.Message;
+import com.qa.framework.pages.BasePage;
 
 public class HomePage extends BasePage {
     private String appLogoSelector = "//div[@class='logo__icon']";

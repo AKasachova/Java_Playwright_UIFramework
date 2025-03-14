@@ -1,10 +1,10 @@
 package com.qa.orangehr.orangePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.framework.elements.Button;
-import com.qa.orangehr.framework.elements.Element;
-import com.qa.orangehr.framework.elements.Message;
-import com.qa.orangehr.framework.elements.TextField;
+import com.qa.framework.elements.Button;
+import com.qa.framework.elements.Element;
+import com.qa.framework.elements.Message;
+import com.qa.framework.elements.TextField;
 
 public class LoginPage extends OrangeBasePage {
     private String logoSelector = "//div[@class='orangehrm-login-branding']";

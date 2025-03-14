@@ -1,8 +1,8 @@
 package com.qa.orangehr.orangePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.framework.elements.Element;
-import com.qa.orangehr.framework.elements.DropDownMenu;
+import com.qa.framework.elements.Element;
+import com.qa.framework.elements.DropDownMenu;
 
 public class DashboardPage extends OrangeBasePage {
     private String dropDownMenuSelector = "//li[contains(@class, 'oxd-userdropdown')]";
