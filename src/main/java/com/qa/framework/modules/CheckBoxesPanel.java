@@ -19,6 +19,7 @@ public class CheckBoxesPanel extends CheckBox{
         }
     }
 
+
     protected List<String>  getAllCheckBoxesText(String checkBoxTextSelector) {
         List<String> allCheckBoxesText = new ArrayList<>();
         for (int i = 0; i < checkBoxes.size(); i++) {
@@ -27,17 +28,17 @@ public class CheckBoxesPanel extends CheckBox{
         return allCheckBoxesText;
     }
 
-    public void unselectAllCheckBoxes(String textOfCheckBoxToUnselectAll, String checkBoxTextSelector) {
+    public void unselectAllCheckBoxes(String textOfCheckBoxToUnselectAll, String checkBoxTextSelector, String checkBoxIconSelector) {
         List<String> allCheckBoxesText = getAllCheckBoxesText(checkBoxTextSelector);
         for (int i = 0; i < allCheckBoxesText.size(); i++) {
             if (allCheckBoxesText.get(i).equals(textOfCheckBoxToUnselectAll)) {
-                checkBoxes.get(i).clickOnCheckBox();
+                checkBoxes.get(i).clickOnCheckBoxIcon(checkBoxIconSelector);
             }
         }
     }
 
-    public void clickRandomCheckBoxes(int count, String textOfCheckBoxToUnselectAll, String checkBoxTextSelector) {
-        unselectAllCheckBoxes(textOfCheckBoxToUnselectAll, checkBoxTextSelector);
+    public void clickRandomCheckBoxes(int count, String textOfCheckBoxToUnselectAll, String checkBoxTextSelector,  String checkBoxIconSelector) {
+        unselectAllCheckBoxes(textOfCheckBoxToUnselectAll, checkBoxTextSelector, checkBoxIconSelector);
         List<CheckBox> filteredCheckBoxes = checkBoxes.stream()
                 .filter(checkBox -> !checkBox.getTextContent().equals(textOfCheckBoxToUnselectAll))
                 .toList();
@@ -55,7 +56,7 @@ public class CheckBoxesPanel extends CheckBox{
         }
 
         for (int index : selectedIndexes) {
-            filteredCheckBoxes.get(index).clickOnCheckBox();
+            filteredCheckBoxes.get(index).clickOnCheckBoxIcon(checkBoxIconSelector);
         }
     }
 

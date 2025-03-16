@@ -26,6 +26,7 @@ public class GamePage extends BasePage {
     private String nextLinkSelector = "//div[contains(@class,'button-container__secondary')]//a[@class='button--secondary']";
     private String interestsListCheckBoxesSelector = "//div[@class='avatar-and-interests__interests-list__item']";
     private String  interestsListCheckBoxTextSelector = "//span[string-length(normalize-space(.)) > 0]";
+    private String  interestsListCheckBoxIconSelector = "//span[@class = 'checkbox__box']";
     private String dropDownOptionsWithoutDefaultSelector = "//div[contains(@class, 'dropdown__list-item')]";
     private String uploadImgLinkSelector = "//a[@class='avatar-and-interests__upload-button']";
     private String nextButtonSelector = "//button[contains(text(), 'Next')]";
@@ -131,7 +132,7 @@ public class GamePage extends BasePage {
     }
 
     public void clickRandomCheckBoxesInInterestsListCheckBoxesPanel(int count){
-        getInterestsListCheckBoxesPanel().clickRandomCheckBoxes(count, "Unselect all", interestsListCheckBoxTextSelector);
+        getInterestsListCheckBoxesPanel().clickRandomCheckBoxes(count, "Unselect all", interestsListCheckBoxTextSelector, interestsListCheckBoxIconSelector);
     }
 
     public void uploadImg() throws AWTException {
