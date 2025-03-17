@@ -4,6 +4,7 @@ import com.microsoft.playwright.Page;
 import com.qa.framework.elements.*;
 import com.qa.framework.elements.Button;
 import com.qa.framework.elements.TextField;
+import com.qa.framework.forms.ModalWindow;
 import com.qa.framework.modules.CheckBoxesPanel;
 import com.qa.framework.modules.FileUploader;
 import com.qa.framework.pages.BasePage;
@@ -12,21 +13,19 @@ import com.qa.framework.utils.dataGenerator.RandomDataGenerator;
 import java.awt.*;
 
 public class GamePage extends BasePage {
-
     private String pageIndicatorSelector = "//div[@class = 'page-indicator']";
     private String passwordFieldSelector = "//input[@placeholder='Choose Password']";
     private String emailFieldSelector = "//input[@placeholder='Your email']";
     private String domainFieldSelector = "//input[@placeholder='Domain']";
     private String topLevelDomainSelector = "//div[contains(@class,'dropdown--gray')]";
     private String termsOfUseSelector = "//a[@class='login-form__terms-conditions']/span[@class='login-form__terms-conditions-underline']";
-    /*    private String termsOfUseModalWindowSelector = "//div[@class='modal']//div[@class='terms-and-conditions']";
-        private String termsOfUseModalAcceptButtonSelector = "//button[contains(text(), 'Accept')]";*/
-    //private String nextButtonSelector = "//a[contains(text(), 'Next')]";
+    private String termsOfUseModalWindowSelector = "//div[@class='modal']//div[@class='terms-and-conditions']";
+    private String termsOfUseModalAcceptButtonSelector = "//button[contains(text(), 'Accept')]";
     private String termsAndConditionsCheckBoxSelector = "//span[contains(@class, 'checkbox') and .//label[@for='accept-terms-conditions']]";
     private String nextLinkSelector = "//div[contains(@class,'button-container__secondary')]//a[@class='button--secondary']";
     private String interestsListCheckBoxesSelector = "//div[@class='avatar-and-interests__interests-list__item']";
-    private String  interestsListCheckBoxTextSelector = "//span[string-length(normalize-space(.)) > 0]";
-    private String  interestsListCheckBoxIconSelector = "//span[@class = 'checkbox__box']";
+    private String interestsListCheckBoxTextSelector = "//span[string-length(normalize-space(.)) > 0]";
+    private String interestsListCheckBoxIconSelector = "//span[@class = 'checkbox__box']";
     private String dropDownOptionsWithoutDefaultSelector = "//div[contains(@class, 'dropdown__list-item')]";
     private String uploadImgLinkSelector = "//a[@class='avatar-and-interests__upload-button']";
     private String nextButtonSelector = "//button[contains(text(), 'Next')]";
@@ -59,15 +58,14 @@ public class GamePage extends BasePage {
         return new Link(page, termsOfUseSelector);
     }
 
-    /*   private Button getTermsOfUseModalAcceptButton() {
-           return new Button(page, termsOfUseModalAcceptButtonSelector);
-       }
+   private Button getTermsOfUseModalAcceptButton() {
+       return new Button(page, termsOfUseModalAcceptButtonSelector);
+   }
 
+   private ModalWindow getTermsOfUseModalWindow() {
+       return new ModalWindow(page, termsOfUseModalWindowSelector, getTermsOfUseModalAcceptButton());
+   }
 
-       private ModalWindow getTermsOfUseModalWindow() {
-           return new ModalWindow(page, termsOfUseModalWindowSelector, getTermsOfUseModalAcceptButton());
-       }
-   */
     private Link getNextLink() {
         return new Link(page, nextLinkSelector);
     }
@@ -108,21 +106,19 @@ public class GamePage extends BasePage {
         getTopLevelDomainDropDown().chooseDropDownOption(option, dropDownOptionsWithoutDefaultSelector);
     }
 
-
     public void clickTermsOfUseLink() {
         getTermsOfUseLink().click();
     }
 
-    /*
-        public void waitForTermsOfUseModalToBeAvailable() {
-            getTermsOfUseModalWindow().waitForModalWindowToBeAvailable();
-        }
+    public void waitForTermsOfUseModalToBeAvailable() {
+        getTermsOfUseModalWindow().waitForModalWindowToBeAvailable();
+    }
 
-        public void acceptTermsOfUseModal() {
-            getTermsOfUseModalWindow().scrollToTheBottomOfTheModalWindow();
-            getTermsOfUseModalWindow().acceptWhenEnabled();
-        }
-    */
+    public void acceptTermsOfUseModal() {
+        getTermsOfUseModalWindow().scrollToTheBottomOfTheModalWindow();
+        getTermsOfUseModalWindow().acceptWhenEnabled();
+    }
+
     public void clickOnTermsAndConditionsCheckBox() {
         getTermsAndConditionsCheckBox().clickOnCheckBox();
     }
@@ -142,5 +138,4 @@ public class GamePage extends BasePage {
     public void clickNextButton() {
         getNextButton().clickButton();
     }
-
 }

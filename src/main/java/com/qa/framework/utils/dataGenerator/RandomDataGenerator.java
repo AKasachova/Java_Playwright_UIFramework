@@ -27,7 +27,6 @@ public class RandomDataGenerator {
 
         SecureRandom random = new SecureRandom();
         List<Character> password = new ArrayList<>();
-
         password.add(upperCase.charAt(random.nextInt(upperCase.length())));
         password.add(digits.charAt(random.nextInt(digits.length())));
         password.add(cyrillic.charAt(random.nextInt(cyrillic.length())));
@@ -50,7 +49,6 @@ public class RandomDataGenerator {
         for (char c : password) {
             result.append(c);
         }
-
         return result.toString();
     }
 }

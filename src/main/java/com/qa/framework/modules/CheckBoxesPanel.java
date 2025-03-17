@@ -19,7 +19,6 @@ public class CheckBoxesPanel extends CheckBox{
         }
     }
 
-
     protected List<String>  getAllCheckBoxesText(String checkBoxTextSelector) {
         List<String> allCheckBoxesText = new ArrayList<>();
         for (int i = 0; i < checkBoxes.size(); i++) {
@@ -42,22 +41,18 @@ public class CheckBoxesPanel extends CheckBox{
         List<CheckBox> filteredCheckBoxes = checkBoxes.stream()
                 .filter(checkBox -> !checkBox.getTextContent().equals(textOfCheckBoxToUnselectAll))
                 .toList();
-
         if (count > filteredCheckBoxes.size()) {
             throw new IllegalArgumentException("Запрашиваемое количество чекбоксов больше доступного списка после фильтрации.");
         }
-
         Random random = new Random();
         Set<Integer> selectedIndexes = new HashSet<>();
-
         while (selectedIndexes.size() < count) {
             int randomIndex = random.nextInt(filteredCheckBoxes.size());
             selectedIndexes.add(randomIndex);
         }
-
         for (int index : selectedIndexes) {
             filteredCheckBoxes.get(index).clickOnCheckBoxIcon(checkBoxIconSelector);
+            page.waitForTimeout(1000);
         }
     }
-
 }

@@ -5,10 +5,7 @@ import com.qa.userinyerface.framework.utils.modalhandler.ModalHandler;
 import com.qa.userinyerface.userinyerfacePageObjects.GamePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 
 public class IntroductionTests extends BaseTest {
     @Test
@@ -29,7 +26,6 @@ public class IntroductionTests extends BaseTest {
         String pageIndicatorTextActual = gamePage.getPageIndicatorText();
         String pageIndicatorTextExpected = "1 / 4";
         Assertions.assertEquals(pageIndicatorTextExpected, pageIndicatorTextActual);
-
 
         gamePage.fillPasswordAndEmailFieldsWithValidRandomData(".org");
         gamePage.clickOnTermsAndConditionsCheckBox();

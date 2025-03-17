@@ -10,9 +10,8 @@ public class CheckBox extends Element {
         this.checkBoxSelector = checkBoxSelector;
     }
 
-
-    private Element getCheckBoxIcon(String checkBoxIcontSelector) {
-        return new Element(page, String.format("%s" + checkBoxIcontSelector, checkBoxSelector));
+    private Element getCheckBoxIcon(String checkBoxIconSelector) {
+        return new Element(page, String.format("%s" + checkBoxIconSelector, checkBoxSelector));
     }
 
     public String getCheckBoxText(String checkBoxTextSelector) {
@@ -26,5 +25,4 @@ public class CheckBox extends Element {
     public void clickOnCheckBox() {
         click();
     }
-
 }

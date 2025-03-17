@@ -17,7 +17,6 @@ public class BaseTest {
     protected Page page;
     protected HomePage homePage;
 
-
     @BeforeAll
     public static void setUpTestSuit() {
         browser = BrowserManager.getBrowser();
@@ -38,5 +37,4 @@ public class BaseTest {
     public static void tearDownTests(){
         BrowserManager.closeBrowser();
     }
-
 }

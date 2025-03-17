@@ -1,4 +1,3 @@
-/*
 package com.qa.orangehr.tests;
 
 import com.qa.orangehr.base.BaseTest;
@@ -6,10 +5,8 @@ import com.qa.orangehr.orangePageObjects.AdminUserManagementPage;
 import com.qa.orangehr.orangePageObjects.DashboardPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
-
 
 public class TableElementTest extends BaseTest {
     @Test
@@ -39,4 +36,3 @@ public class TableElementTest extends BaseTest {
             Assertions.assertEquals("Dashboard", actualTopBarText);
         }
     }
-*/

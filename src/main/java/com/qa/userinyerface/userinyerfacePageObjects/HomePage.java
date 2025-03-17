@@ -38,6 +38,4 @@ public class HomePage extends BasePage {
     public void clickStartLink(){
         getStartLink().clickLink();
     }
-
-
 }
