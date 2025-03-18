@@ -42,7 +42,7 @@ public class CheckBoxesPanel extends CheckBox{
                 .filter(checkBox -> !checkBox.getTextContent().equals(textOfCheckBoxToUnselectAll))
                 .toList();
         if (count > filteredCheckBoxes.size()) {
-            throw new IllegalArgumentException("Запрашиваемое количество чекбоксов больше доступного списка после фильтрации.");
+            throw new IllegalArgumentException("The requested number of checkboxes exceeds the available list after filtering.");
         }
         Random random = new Random();
         Set<Integer> selectedIndexes = new HashSet<>();

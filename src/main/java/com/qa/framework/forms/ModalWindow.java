@@ -21,7 +21,7 @@ public class ModalWindow {
     }
 
     //todo
-/*    private Locator getModalWindow() {
+/*  private Locator getModalWindow() {
         return page.locator(modalWindowSelector);
     }*/
 

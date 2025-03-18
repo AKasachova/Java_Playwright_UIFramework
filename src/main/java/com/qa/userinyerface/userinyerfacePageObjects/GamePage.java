@@ -10,7 +10,6 @@ import com.qa.framework.modules.CheckBoxesPanel;
 import com.qa.framework.modules.FileUploader;
 import com.qa.framework.pages.BasePage;
 import com.qa.framework.utils.dataGenerator.RandomDataGenerator;
-
 import java.awt.*;
 
 public class GamePage extends BasePage {
@@ -36,6 +35,7 @@ public class GamePage extends BasePage {
     private String modalWindowTitleSelector = "//h2[@class = 'help-form__title']";
     private String cookiesBannerSelector = "//div[@class = 'cookies']";
     private String cookiesBannerYesButtonSelector = "//button[contains(@class, 'cookies__button') and contains(text(), 'Yes')]";
+    private String timerSelector = ".timer--center";
 
     public GamePage(Page page) {
         super(page);
@@ -112,6 +112,9 @@ public class GamePage extends BasePage {
     private CookiesBanner getCookiesBanner() {
         return new CookiesBanner(page,cookiesBannerSelector, getCookiesBannerYesButton());
     }
+    private Element getTimer() {
+        return new Element(page, timerSelector);
+    }
 
     public String getPageIndicatorText() throws InterruptedException {
         getPageIndicator().isVisible();
@@ -177,5 +180,8 @@ public class GamePage extends BasePage {
     public void clickCookiesBannerYesButton() {
         getCookiesBanner().clickAcceptButton();
     }
-}
 
+    public String getTimerText() {
+        return getTimer().getTextContent();
+    }
+}

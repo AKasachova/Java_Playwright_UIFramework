@@ -42,9 +42,7 @@ public class RandomDataGenerator {
         while (password.size() < 10) {
             password.add(allChars.charAt(random.nextInt(allChars.length())));
         }
-
         Collections.shuffle(password);
-
         StringBuilder result = new StringBuilder();
         for (char c : password) {
             result.append(c);

@@ -6,7 +6,6 @@ import com.microsoft.playwright.Page;
 import com.qa.framework.manager.ContextManager;
 import com.qa.orangehr.orangePageObjects.LoginPage;
 import com.qa.framework.utils.config.ConfigUtils;
-
 import com.qa.framework.manager.BrowserManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -18,18 +17,19 @@ public class BaseTest {
     protected BrowserContext context;
     protected Page page;
     protected LoginPage loginPage;
-
     protected String userNameInvalid = "userName";
     protected String passwordInvalid = "password";
 
     @BeforeAll
     public static void setUpTestSuit() {
         browser = BrowserManager.getBrowser();
+        //browser = BrowserManager.getBrowser("firefox");
     }
 
     @BeforeEach
     public void setUpContextAndPage() {
-        page = ContextManager.getNewPage(browser, "urlOrangehr", "orangeHr");
+        page = ContextManager.getNewPage(browser);
+        //page = ContextManager.getNewPage(browser, "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         loginPage = new LoginPage(page);
     }
 

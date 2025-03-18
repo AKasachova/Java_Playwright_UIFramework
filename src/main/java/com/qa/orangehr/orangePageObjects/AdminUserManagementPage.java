@@ -60,6 +60,4 @@ public class AdminUserManagementPage extends OrangeBasePage {
     public String getTopBarText(){
         return topBar.getTopBarBreadscrumbsText();
     }
-
-
 }

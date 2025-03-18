@@ -1,8 +1,6 @@
 package com.qa.userinyerface.tests;
 
-//import com.microsoft.playwright.ElementHandle;
-//import com.microsoft.playwright.Locator;
-import com.qa.userinyerface.base.base.BaseTest;
+import com.qa.userinyerface.base.BaseTest;
 import com.qa.userinyerface.framework.utils.modalhandler.ModalHandler;
 import com.qa.userinyerface.userinyerfacePageObjects.GamePage;
 import org.junit.jupiter.api.Assertions;
@@ -52,7 +50,6 @@ public class IntroductionTests extends BaseTest {
         GamePage gamePage = new GamePage(page);
         gamePage.clickSendToBottomButtonInHideWindow();
         boolean isHelpFormHidden = gamePage.isHelpFormHidden();
-
         Assertions.assertTrue(isHelpFormHidden);
     }
 
@@ -68,9 +65,12 @@ public class IntroductionTests extends BaseTest {
 
     @Test
     public void timerStartsFromZero() {
-            homePage.clickStartLink();
-            GamePage gamePage = new GamePage(page);
-        //todo
+        homePage.clickStartLink();
+        GamePage gamePage = new GamePage(page);
+        String initialTimerText = gamePage.getTimerText();
+        Assertions.assertTrue(initialTimerText.startsWith("00:00"), "Timer needs to start with 00:00");
+        //Tried decisions
+        //Error: IntroductionTests.timerStartsFromZero:79 ?????? ?????? ?????????? ? 00:00 ==> expected: <00:00:00> but was: <00:00:01>
         //ElementHandle timerLocator = page.querySelector(".timer--center");
         //Locator timerLocator = page.locator(".timer--center");
         //ElementHandle timerLocator = page.querySelector("//div[(contains(@class, 'timer--center') and contains(text(),'00:00:00'))]");
@@ -79,7 +79,5 @@ public class IntroductionTests extends BaseTest {
         //String initialText = timerLocator.innerHTML();
         //System.out.println(initialText);
         //Assertions.assertEquals("00:00:00", initialText, "Таймер должен начинаться с 00:00");
-
-        //Error: IntroductionTests.timerStartsFromZero:79 ?????? ?????? ?????????? ? 00:00 ==> expected: <00:00:00> but was: <00:00:01>
     }
 }

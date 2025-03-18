@@ -1,4 +1,4 @@
-package com.qa.userinyerface.base.base;
+package com.qa.userinyerface.base;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -24,7 +24,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUpContextAndPage() {
-        page = ContextManager.getNewPage(browser, "urlUserinyerface", "Userinyerface");
+        page = ContextManager.getNewPage(browser);
         homePage = new HomePage(page);
     }
 

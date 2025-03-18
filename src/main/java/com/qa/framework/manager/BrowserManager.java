@@ -13,6 +13,13 @@ public class BrowserManager {
         return browser;
     }
 
+    public static Browser getBrowser(String browserName) {
+        if (browser == null) {
+            browser = BrowserFactoryProvider.getBrowser(browserName);
+        }
+        return browser;
+    }
+
     public static void closeBrowser() {
         if (browser != null) {
             browser.close();
