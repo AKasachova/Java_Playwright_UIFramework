@@ -1,12 +1,11 @@
-package com.qa.orangehr.base;
+package com.qa.userinyerface.base;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
-import com.qa.framework.manager.ContextManager;
-import com.qa.orangehr.orangePageObjects.LoginPage;
-import com.qa.framework.utils.config.ConfigUtils;
 import com.qa.framework.manager.BrowserManager;
+import com.qa.framework.manager.ContextManager;
+import com.qa.userinyerface.userinyerfacePageObjects.HomePage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,21 +15,17 @@ public class BaseTest {
     private static Browser browser;
     protected BrowserContext context;
     protected Page page;
-    protected LoginPage loginPage;
-    protected String userNameInvalid = "userName";
-    protected String passwordInvalid = "password";
+    protected HomePage homePage;
 
     @BeforeAll
     public static void setUpTestSuit() {
         browser = BrowserManager.getBrowser();
-        //browser = BrowserManager.getBrowser("firefox");
     }
 
     @BeforeEach
     public void setUpContextAndPage() {
         page = ContextManager.getNewPage(browser);
-        //page = ContextManager.getNewPage(browser, "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        loginPage = new LoginPage(page);
+        homePage = new HomePage(page);
     }
 
     @AfterEach
@@ -41,11 +36,5 @@ public class BaseTest {
     @AfterAll
     public static void tearDownTests(){
         BrowserManager.closeBrowser();
-    }
-
-    public void logInAsAdmin() {
-        loginPage.fillUserNameField(ConfigUtils.getConfigProperties().getProperty("userNameAdmin"));
-        loginPage.fillPasswordField(ConfigUtils.getConfigProperties().getProperty("passwordAdmin"));
-        loginPage.clickSubmitButton();
     }
 }

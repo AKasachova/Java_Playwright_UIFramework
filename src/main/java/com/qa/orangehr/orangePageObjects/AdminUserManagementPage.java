@@ -1,16 +1,19 @@
 package com.qa.orangehr.orangePageObjects;
 
 import com.microsoft.playwright.Page;
-import com.qa.orangehr.framework.elements.DropDown;
-import com.qa.orangehr.framework.elements.TopBar;
-import com.qa.orangehr.framework.elements.TopBarBreadscrumb;
-import com.qa.orangehr.framework.modules.Table;
+import com.qa.framework.elements.DropDown;
+import com.qa.framework.elements.TopBar;
+import com.qa.framework.elements.TopBarBreadscrumb;
+import com.qa.framework.modules.Table;
 import java.util.List;
 
 public class AdminUserManagementPage extends OrangeBasePage {
     private String userRoleDropDownSelector = "//div[contains(@class,'oxd-input-group') and .//label[text()='User Role']]"
             + "//div[@class='oxd-select-wrapper']";
     private String recordsFoundTableSelector = "//div[@class='oxd-table']";
+    private String caretDownSelector = "//i[contains(@class, 'bi-caret-down-fill')]";
+    private String dropDownOptionsWithoutDefaultSelector = "//div[@class='oxd-select-option']//span";
+    private String dropDownOptionsWithDefaultSelector = "//div[@class='oxd-select-option']";
 
     public AdminUserManagementPage(Page page) {
         super(page);
@@ -28,12 +31,13 @@ public class AdminUserManagementPage extends OrangeBasePage {
 
 
     public List<String> getAllUserRoleDropDownOptions() {
-        getUserRoleDropDown().expandDropDown();
-        return getUserRoleDropDown().getDropDownOptionsText();
+        getUserRoleDropDown().expandDropDown(caretDownSelector);
+        return getUserRoleDropDown().getDropDownOptionsText(dropDownOptionsWithoutDefaultSelector);
     }
 
     public void chooseUserRoleDropDownOption(String option){
-        getUserRoleDropDown().chooseDropDownOption(option);
+        getUserRoleDropDown().expandDropDown(caretDownSelector);
+        getUserRoleDropDown().chooseDropDownOption(option, dropDownOptionsWithoutDefaultSelector);
     }
 
     public String getSetUserRoleDropDownOption(){
@@ -41,8 +45,8 @@ public class AdminUserManagementPage extends OrangeBasePage {
     }
 
     public void resetUserRoleDropDownOption(){
-        getUserRoleDropDown().expandDropDown();
-        getUserRoleDropDown().resetDropDownOptions();
+        getUserRoleDropDown().expandDropDown(caretDownSelector);
+        getUserRoleDropDown().resetDropDownOptions(dropDownOptionsWithDefaultSelector);
     }
 
     public List<String> getColumnValuesForRecordsFoundTable(String columnName){
